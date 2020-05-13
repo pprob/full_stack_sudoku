@@ -1,0 +1,20 @@
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.nav li {
+  display: inline;
+  margin: 0 10px;
+  padding: 3px 5px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #00A6ED;
+  font-size: 18px;
+}
+
+.selected {
+  font-weight: bold;
+}

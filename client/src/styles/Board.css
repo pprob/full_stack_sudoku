@@ -1,0 +1,9 @@
+.board-container {
+    margin-top: 10px;
+    flex: 2;
+}
+
+.board {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}

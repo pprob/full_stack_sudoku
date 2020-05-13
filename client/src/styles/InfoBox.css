@@ -1,0 +1,35 @@
+.info-box {
+  flex: 1;
+}
+.info-item {
+  margin: 15px 1px;
+}
+.drop-down {
+  border: none;
+  position: relative;
+  display: inline;
+}
+.drop-down-selected {
+  position: absolute;
+  left: 0px;
+  width: 40px;
+}
+
+.drop-down-content {
+  display: none;
+  position: absolute;
+  left: 0px;
+  z-index: 1;
+}
+
+.option {
+  width: 40px;
+  padding: 3px;
+  border: none;
+  background-color: grey;
+  color: pink;
+}
+
+.drop-down:hover .drop-down-content {
+  display: block;
+}

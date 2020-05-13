@@ -1,0 +1,17 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.app-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}

@@ -1,0 +1,37 @@
+.button-container {
+  flex: 0;
+  margin: 10px 20px;
+}
+
+.app-container {
+  text-align: justify;
+}
+
+.button {
+  text-align: center;
+  margin: 3px 3px;
+  font-size: 16px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+
+.new-game {
+  background-color: #F0395f;
+}
+
+.solve {
+  background-color: #FFDB49;
+}
+
+.incorrect {
+  background-color: #266CDA;
+}
+
+.delete {
+  background-color: #3EC46D;
+}
+
+.back {
+  background-color: #00C4A6;
+}
