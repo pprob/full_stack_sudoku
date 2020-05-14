@@ -1,70 +1,75 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    trim:true,
+    trim: true,
     unique: 1,
   },
   username: {
     type: String,
     unique: 1,
-    maxLength: 15
+    maxLength: 15,
   },
   password: {
     type: String,
-    minLength: 8
+    minLength: 8,
   },
   role: {
     type: Number,
-    default: 0
+    default: 0,
   },
   token: {
     type: String,
   },
   tokenExpiration: {
-    type: Number
-  }
-})
+    type: Number,
+  },
+});
 
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   const user = this;
-  
-  if(user.isModified('password')) {
+
+  if (user.isModified("password")) {
     try {
-      const salt = await bcrypt.genSalt(saltRounds)
-      const hash = await bcrypt.hash(user.password, salt)
-  
-      user.password = hash
+      const salt = await bcrypt.genSalt(saltRounds);
+      const hash = await bcrypt.hash(user.password, salt);
+
+      user.password = hash;
+      next()
     } catch (e) {
-        return next(e)
+      return next(e);
     }
   } else {
-    next()
+    next();
   }
-})
+});
 
 userSchema.methods.comparePassword = async function (plainPassword) {
-  
-  const isMatch = await bcrypt.compare(plainPassword, this.password)
+  const isMatch = await bcrypt.compare(plainPassword, this.password);
 
-  if(!isMatch) {
-    throw new Error('Wrong email or wrong password combination')
+  if (!isMatch) {
+    throw new Error("Wrong email or wrong password combination");
   }
-  return true
-}
+  return isMatch;
+};
 
 userSchema.methods.generateToken = async function () {
   const user = this;
+  console.log(user._id);
+  console.log(user._id.toHexString());
 
-  const token = 
-}
+  const token = jwt.sign(user._id.toHexString(), "testsecret");
 
+  user.token = token;
+  await user.save();
 
+  return token
+};
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model("User", userSchema);
 
-module.exports = User 
+module.exports = User;
