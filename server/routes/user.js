@@ -13,7 +13,6 @@ router.get('/auth', auth, (req, res) => {
   })
 })
 
-
 router.post('/register', async (req, res) => {
 
   const user = new User(req.body)
@@ -56,6 +55,10 @@ router.post('/login', async (req, res) => {
       error : e.message
     })
   }
+})
+
+router.post('/logout', auth, (req, res) => {
+  
 })
 
 module.exports = router
