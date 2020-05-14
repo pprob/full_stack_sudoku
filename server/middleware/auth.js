@@ -5,10 +5,11 @@ const auth = async (req, res, next) => {
   try {
     const token = req.cookies.access_token
     const decoded = await jwt.verify(token, 'testsecret')
+    console.log(decoded)
     const user = await User.findOne({'_id': decoded, token: token})
 
     if (!user) {
-      throw new Error()
+      throw new Error('Please login')
     }
     req.user = user
     req.token = token
@@ -21,4 +22,4 @@ const auth = async (req, res, next) => {
   }
 }
 
-modules.exports = auth
+module.exports = auth

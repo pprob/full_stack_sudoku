@@ -62,8 +62,9 @@ userSchema.methods.generateToken = async function () {
   console.log(user._id);
   console.log(user._id.toHexString());
 
-  const token = jwt.sign(user._id.toHexString(), "testsecret");
-
+  const token = jwt.sign(user._id.toHexString(), "testsecret",{ });
+  console.log(user._id.toHexString())
+  
   user.token = token;
   await user.save();
 

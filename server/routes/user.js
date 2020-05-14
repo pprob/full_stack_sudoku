@@ -1,12 +1,16 @@
 const express = require('express')
-
 const router = express.Router();
-
 const User = require('../models/User')
-
+const auth = require('../middleware/auth')
 
 router.get('/auth', auth, (req, res) => {
-  
+  res.status(200).json({
+    _id: req._id,
+    isAuth: true,
+    email: req.user.email,
+    username: req.user.username,
+    role: req.user.role
+  })
 })
 
 
