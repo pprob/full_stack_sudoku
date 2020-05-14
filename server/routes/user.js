@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     if(!user) {
       return res.status(500).json({
         success: false,
-        error: "Incorrect email entered"
+        error: "Unable to find email or password combination"
       })
     }
     await user.comparePassword(req.body.password)

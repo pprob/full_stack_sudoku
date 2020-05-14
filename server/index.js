@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.use('/api/users', require('./routes/user'))
+app.use('/api/user', require('./routes/user'))
 
 
 app.listen(5000, () => {

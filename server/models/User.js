@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -55,6 +56,13 @@ userSchema.methods.comparePassword = async function (plainPassword) {
   }
   return true
 }
+
+userSchema.methods.generateToken = async function () {
+  const user = this;
+
+  const token = 
+}
+
 
 
 const User = mongoose.model('User', userSchema)
