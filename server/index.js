@@ -24,7 +24,8 @@ app.use(cookieParser())
 
 app.use('/api/users', require('./routes/user'))
 
+const port = process.env.PORT || 5000
 
 app.listen(5000, () => {
-  console.log('app listening on port 5000')
+  console.log(`app listening on port ${port}`)
 })

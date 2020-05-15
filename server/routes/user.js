@@ -55,8 +55,17 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", auth, (req, res) => {
-  
+router.post("/logout", auth, async (req, res) => {
+  try {
+    await User.findOneAndUpdate({ _id: req.user._id}, { token:'' }, { useFindAndModify: false})
+    res.status(200).json({
+      success: true
+    })
+  } catch (e) {
+    res.status(400).json({
+      error: e
+    })
+  }
 });
 
 module.exports = router;
