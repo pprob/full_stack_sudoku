@@ -59,11 +59,8 @@ userSchema.methods.comparePassword = async function (plainPassword) {
 
 userSchema.methods.generateToken = async function () {
   const user = this;
-  console.log(user._id);
-  console.log(user._id.toHexString());
-
+  
   const token = jwt.sign(user._id.toHexString(), "testsecret",{ });
-  console.log(user._id.toHexString())
   
   user.token = token;
   await user.save();
