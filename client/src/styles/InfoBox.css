@@ -9,10 +9,12 @@
   position: relative;
   display: inline;
 }
-.drop-down-selected {
-  position: absolute;
+.drop-down-selection {
+  width: 150px;
   left: 0px;
-  width: 40px;
+  background-color: #EAe7dc;
+  border: none;
+  text-align: center;
 }
 
 .drop-down-content {
@@ -21,15 +23,22 @@
   left: 0px;
   z-index: 1;
 }
+.drop-down-content button {
+  display: block;
+  width: 150px;
+}
 
 .option {
-  width: 40px;
   padding: 3px;
   border: none;
   background-color: grey;
-  color: pink;
 }
 
 .drop-down:hover .drop-down-content {
   display: block;
+}
+.label {
+  margin-right: 10px;
+  color: #8e8d8a;
+  font-weight: 700;
 }

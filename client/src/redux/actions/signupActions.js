@@ -20,3 +20,16 @@ export const setPasswordField = (value) => {
     password: value
   }
 }
+
+export const setErrorField = (payload) => {
+  return {
+    type: 'SET_ERROR_FIELD',
+    payload
+  }
+}
+
+export const removeErrorField = () => {
+  return {
+    type: 'REMOVE_ERROR_FIELD',
+  }
+}

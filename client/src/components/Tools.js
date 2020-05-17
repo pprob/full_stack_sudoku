@@ -4,10 +4,11 @@ import { createNewGame} from '../redux/actions/actions'
 import "../styles/Tools.css";
 
 const Tools = props => {
-  const { solve, stop, dispatch, deleteGame, goBack } = props;
+  const { solve, stop, dispatch, deleteGame, goBack, infoState} = props;
+  
   return (
     <div className="button-container">
-      <button className="button new-game" onClick={e => dispatch(createNewGame())}>
+      <button className="button new-game" onClick={e => dispatch(createNewGame(infoState.difficulty))}>
         New Game
       </button>
       <button className="button solve" onClick={solve}>
@@ -27,7 +28,7 @@ const Tools = props => {
 };
 const mapStateToProps = (state) => {
   return {
-    difficulty: state.infoState.difficulty
+    infoState: state.infoState
   }
 }
 

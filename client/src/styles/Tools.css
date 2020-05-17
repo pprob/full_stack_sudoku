@@ -1,37 +1,19 @@
-.button-container {
-  flex: 0;
-  margin: 10px 20px;
-}
 
 .app-container {
   text-align: justify;
 }
+.button-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
 
+}
 .button {
+  background-color: #EAE7DC;
   text-align: center;
-  margin: 3px 3px;
-  font-size: 16px;
-  border: none;
-  color: white;
-  border-radius: 4px;
+  text-decoration: none;
+  color: #e98074;
+  border: solid 1px black;
+  padding: 5px 10px;
+  margin-right: 5px;
 }
 
-.new-game {
-  background-color: #F0395f;
-}
-
-.solve {
-  background-color: #FFDB49;
-}
-
-.incorrect {
-  background-color: #266CDA;
-}
-
-.delete {
-  background-color: #3EC46D;
-}
-
-.back {
-  background-color: #00C4A6;
-}

@@ -4,6 +4,7 @@ import App from '../components/App'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
 import Signup from '../components/Signup'
+import Login from '../components/Login'
 import '../styles/App.css'
 
 
@@ -14,6 +15,7 @@ const AppRouter = () => (
       <Switch>
         <Route exact path='/' component={App} />
         <Route path='/signup' component={Signup}/>
+        <Route path='/login' component={Login}/>
       </Switch>
       <Footer />
     </div>

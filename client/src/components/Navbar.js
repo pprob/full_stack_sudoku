@@ -12,7 +12,10 @@ const Navbar = (props) => {
             <NavLink to='/' className='nav-link' activeClassName='selected' exact={true}>Home</NavLink>
           </li>
           <li className="list-item">
-            <NavLink to='/signup' className='nav-link' activeClassName='selected'>Sign up!</NavLink>
+            <NavLink to='/signup' className='nav-link' activeClassName='selected'>Sign up</NavLink>
+          </li>
+          <li className='list-item'>
+            <NavLink to='/login' className='nav-link' activeClassName='selected'>Login</NavLink>
           </li>
         </ul>
       </div>

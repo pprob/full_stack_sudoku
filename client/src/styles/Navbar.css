@@ -15,8 +15,11 @@
   text-decoration: none;
   color: black;
   font-size: 18px;
+  font-weight: bold;
+
 }
 
 .selected {
-  font-weight: bold;
+  font-weight: 800;
+  color: #e85A4F;
 }

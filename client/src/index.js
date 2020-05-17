@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import appReducer from './redux/reducers/appReducer';
 import "./index.css";
 import AppRouter from './routers/AppRouter';
-import infoReducer from './redux/reducers/appReducer';
+import infoReducer from './redux/reducers/infoReducer';
 import signupReducer from './redux/reducers/signupReducer'
 
 

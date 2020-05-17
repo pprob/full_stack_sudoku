@@ -4,6 +4,8 @@ import {
   setEmailField,
   setUsernameField,
   setPasswordField,
+  setErrorField,
+  removeErrorField
 } from "../redux/actions/signupActions";
 import "../styles/Signup.css";
 import axios from "axios";
@@ -31,39 +33,46 @@ const Signup = (props) => {
       username: username,
       password: password,
     };
-    console.log(requestField);
 
-    const response = await axios.post(
-      "http://localhost:5000/api/users/register",
-      requestField
-    );
-    console.log(response);
+    try {
+      const response = await axios.post('/api/users/register', requestField)
+      if (response.data.success) {
+        dispatch(removeErrorField())
+        alert('Successfully registered! Taking you to the login page')
+        props.history.push('/login')
+      }
+    } catch (e) {
+      dispatch(setErrorField('Sorry, the email or username is already in use'))
+    }
   };
 
   return (
     <div className="app-body">
       <div className="app-container">
         <div className="header">
-          <h1>Welcome - It's good to see you</h1>
-          <h2>Let's get you signed in</h2>
+          <h1 className="signup-header">Welcome - It's good to see you!</h1>
+          <h2 className="signup-subtitle">Let's get you signed in</h2>
+          <h3 className="signup-subtitle-second">
+            this way we can track your wins, best times and more!
+          </h3>
         </div>
         <div className="form-container">
           <form onSubmit={onSubmit}>
-            <label>Email address</label>
+            <label className="label">Email address</label>
             <input
               className="field"
               placeholder="e.g abc@hotmail.com"
               value={signupState.email}
               onChange={setEmail}
             ></input>
-            <label>Username</label>
+            <label className="label">Username</label>
             <input
               className="field"
               placeholder="Choose your user id. e.g sudokumeister1337"
               value={signupState.username}
               onChange={setUsername}
             ></input>
-            <label>Password</label>
+            <label className="label">Password</label>
             <input
               type="password"
               className="field"
@@ -76,9 +85,11 @@ const Signup = (props) => {
                 <label>{error}</label>
               </div>
             )}
-            <button type="submit" className="submit-button">
-              Sign up!
-            </button>
+            <div className="submit-button-container">
+              <button type="submit" className="submit-button">
+                Sign up!
+              </button>
+            </div>
           </form>
         </div>
       </div>

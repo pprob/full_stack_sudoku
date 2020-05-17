@@ -1,25 +1,51 @@
 .header {
   text-align: center;
+  margin-top: 50px;
+}
+.signup-header {
+  color: #E85A4F;
+}
+.signup-subtitle {
+  color: #8E8D8A;
+
+}
+.signup-subtitle-second {
+ color: #DFDDD1;
+ font-weight: 800;
 }
 
 .field {
   display: block;
-  width: 100%;
+  width: 500px;
   margin: 10px 0px;
   border-radius: 5px;
-  padding: 5px 0px;
+  padding: 7.5px 5px;
   border: solid 1px;
-  padding: 5px;
+  background-color: #EAE7DC;
+  font-weight: bold;
 }
 
 .form-container {
   border-radius: 10px;
-  background-color: blanchedalmond;
   padding: 20px;
 }
-
+.submit-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+.error-container {
+  text-align: center;
+  color: #E85A4F;
+}
 .submit-button {
-  width: 500px;
+  min-width: 500px;
   padding: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  color: #E85A4F;
+}
+
+.label {
+  font-weight: 800;
+  color: black;
 }

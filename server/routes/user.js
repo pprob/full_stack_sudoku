@@ -14,11 +14,9 @@ router.get("/auth", auth, (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const user = new User(req.body);
-
   try {
+    const user = new User(req.body);
     await user.save();
-
     return res.status(200).json({
       success: true,
       user,
@@ -26,7 +24,7 @@ router.post("/register", async (req, res) => {
   } catch (e) {
     return res.status(500).json({
       success: false,
-      error: e,
+      error: e.message
     });
   }
 });

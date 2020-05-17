@@ -2,7 +2,7 @@ const defaultState = {
   email: '',
   username: '',
   password: '',
-  error: ''
+  error: undefined
 }
 
 
@@ -22,6 +22,16 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         password: action.password
+      }
+    case 'SET_ERROR_FIELD':
+      return {
+        ...state,
+        error: action.payload
+      }
+    case 'REMOVE_ERROR_FIELD':
+      return {
+        ...state,
+        error: undefined
       }
     default: 
       return state
