@@ -4,8 +4,9 @@
     text-align: center;
     border: none;
     outline-width: 0px;
-    color: #000807;
-    font-weight: bold;
+    color: black;
+    font-weight: 800;
+    background-color: #EAE7DC;
 }
 .square-input:focus {
     background-color: #A2A3BB;

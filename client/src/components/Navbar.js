@@ -7,11 +7,11 @@ const Navbar = (props) => {
   return (
     <div className='app-container'>
       <div className='navbar-container'>
-        <ul className='nav'>
-          <li>
+        <ul className='nav-list'>
+          <li className="list-item">
             <NavLink to='/' className='nav-link' activeClassName='selected' exact={true}>Home</NavLink>
           </li>
-          <li>
+          <li className="list-item">
             <NavLink to='/signup' className='nav-link' activeClassName='selected'>Sign up!</NavLink>
           </li>
         </ul>

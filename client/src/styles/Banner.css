@@ -1,9 +1,9 @@
-.header-title {
-    color: #D00000;
-    padding-left: 15px;
+.header-title{
+    color: #E85A4F;
+    font-weight: bold;
 }
 
-.header-subtitle {
-    color: #FCBA04;
-    padding-left: 15px;
+.header-subtitle{
+    color:#8E8D8A;
+    margin-bottom: 30px;
 }

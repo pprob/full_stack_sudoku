@@ -6,8 +6,8 @@ const Banner = props => {
   return (
     <header>
       <div className="app-container">
-        <h1 className="header-title">Sudoku</h1>
-        <h2 className="header-subtitle">Come play!</h2>
+        <h1 className="header-title">Classic Sudoku</h1>
+        <h2 className="header-subtitle">Start playing straight away!</h2>
       </div>
       <Navbar />
     </header>
