@@ -17,6 +17,12 @@ const Navbar = (props) => {
           <li className='list-item'>
             <NavLink to='/login' className='nav-link' activeClassName='selected'>Login</NavLink>
           </li>
+          <li className='list-item'>
+            <NavLink to='/me' className='nav-link' activeClassName='selected'>Your profile</NavLink>
+          </li>
+          <li className='list-item'>
+            <NavLink to='/leaderboard' className='nav-link' activeClassName='selected'>Leaderboard</NavLink>
+          </li>
         </ul>
       </div>
     </div>

@@ -10,7 +10,7 @@
 
 }
 .signup-subtitle-second {
- color: #DFDDD1;
+ color: #bbbbb9;
  font-weight: 800;
 }
 
@@ -43,6 +43,7 @@
   cursor: pointer;
   border-radius: 5px;
   color: #E85A4F;
+  background-color: #bbbbb9;
 }
 
 .label {

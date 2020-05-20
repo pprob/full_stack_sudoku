@@ -13,6 +13,13 @@ router.get("/auth", auth, (req, res) => {
   });
 });
 
+router.get("/me", auth, (req, res) => {
+  res.status(200).json({
+    isAuth: true,
+    username: req.user.username
+  })
+})
+
 router.post("/register", async (req, res) => {
   try {
     const user = new User(req.body);

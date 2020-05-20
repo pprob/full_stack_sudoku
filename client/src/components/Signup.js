@@ -42,7 +42,16 @@ const Signup = (props) => {
         props.history.push('/login')
       }
     } catch (e) {
-      dispatch(setErrorField('Sorry, the email or username is already in use'))
+      
+      const { data } = e.response
+      if(data.error.includes('email')) {
+        dispatch(setErrorField('This email is already in use, please use a different email'))
+      } else if(data.error.includes('username')) {
+        dispatch(setErrorField('This username has already been taken. Please choose a different username'))
+      } else {
+        dispatch(setErrorField('Error registering. Please try again.'))
+      }
+      
     }
   };
 
@@ -51,7 +60,7 @@ const Signup = (props) => {
       <div className="app-container">
         <div className="header">
           <h1 className="signup-header">Welcome - It's good to see you!</h1>
-          <h2 className="signup-subtitle">Let's get you signed in</h2>
+          <h2 className="signup-subtitle">Let's get you registered!</h2>
           <h3 className="signup-subtitle-second">
             this way we can track your wins, best times and more!
           </h3>
