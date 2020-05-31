@@ -23,10 +23,16 @@
   border: solid 1px;
   background-color: #EAE7DC;
   font-weight: bold;
+  outline: none;
+  border-color: #bbbbb9;
+}
+.field:focus {
+  border-color: #E85A4F;
 }
 
 .form-container {
   border-radius: 10px;
+  border: 1px solid #E85A4F;
   padding: 20px;
 }
 .submit-button-container {
@@ -47,6 +53,6 @@
 }
 
 .label {
-  font-weight: 800;
+  font-weight: 700;
   color: black;
 }

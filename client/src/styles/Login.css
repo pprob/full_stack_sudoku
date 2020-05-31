@@ -1,0 +1,27 @@
+.title-container {
+    text-align: center;
+}
+
+.login-header {
+    color: #E85A4F;
+}
+.login-subheader {
+    color: #8E8D8A;
+}
+
+.display-signup {
+    text-align: center;
+}
+
+.field {
+    display: block;
+    width: 500px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    padding: 7.5px 5px;
+    border: solid 1px;
+    background-color: #EAE7DC;
+    font-weight: bold;
+    outline: none;
+    border-color: #bbbbb9;
+}

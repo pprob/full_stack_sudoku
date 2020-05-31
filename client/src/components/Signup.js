@@ -51,7 +51,6 @@ const Signup = (props) => {
       } else {
         dispatch(setErrorField('Error registering. Please try again.'))
       }
-      
     }
   };
 
