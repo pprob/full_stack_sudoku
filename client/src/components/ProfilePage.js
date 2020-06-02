@@ -5,9 +5,7 @@ const ProfilePage = (props) => {
   const { loggedIn } = props;
   const renderProfile = () => {
     return (
-      <div>
         <ProfileCard />
-      </div>
     )
   };
   const renderLoginNotice = () => {

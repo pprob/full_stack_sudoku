@@ -7,15 +7,15 @@ import "../styles/InfoBox.css";
 
 // difficulty, setDifficulty, feedback, changeFeedbackToggle
 const InfoBox = (props) => {
-  const { difficulty, feedback, dispatch } = props
+  const { difficulty, feedback, dispatch } = props;
   const difficultyLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
+
   return (
     <div className="info-box">
       <div className="app-container">
         <div>
           <div className="info-item">
-            <label className='label'>Select your difficulty level:</label>
+            <label className="label">Select your difficulty level:</label>
             <div className="drop-down">
               <button className="drop-down-selection">{difficulty}</button>
               <div className="drop-down-content">
@@ -25,8 +25,9 @@ const InfoBox = (props) => {
                       className="option"
                       key={level}
                       value={level}
-                      onClick={(e) =>  {
-                        dispatch(setDifficulty(level))}}
+                      onClick={(e) => {
+                        dispatch(setDifficulty(level));
+                      }}
                     >
                       {level}
                     </button>
@@ -35,29 +36,37 @@ const InfoBox = (props) => {
               </div>
             </div>
           </div>
-
           <div className="info-item">
-            <label className="label">Would you like real-time feedback as you play?</label>
-            <input
-              type="radio"
-              name="feedback"
-              id="yes"
-              checked={feedback}
-              onChange={(e) => {
-                if (e.target.value === "yes") dispatch(setFeedback(true));
-              }}
-              value="yes"
-            />
-            <input
-              type="radio"
-              name="feedback"
-              value="no"
-              id="no"
-              checked={!feedback}
-              onChange={(e) => {
-                if (e.target.value === "no") dispatch(setFeedback(false));
-              }}
-            />
+            <label className="label">
+              Would you like real-time feedback as you play?
+            </label>
+            <div className="toggle">Yes
+              <input
+                className='radio-button'
+                type="radio"
+                name="feedback"
+                id="yes"
+                checked={feedback}
+                onChange={(e) => {
+                  if (e.target.value === "yes") dispatch(setFeedback(true));
+                }}
+                value="yes"
+              />
+            </div>
+            <div className="toggle">
+              No
+              <input
+                className='radio-button'
+                type="radio"
+                name="feedback"
+                value="no"
+                id="no"
+                checked={!feedback}
+                onChange={(e) => {
+                  if (e.target.value === "no") dispatch(setFeedback(false));
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

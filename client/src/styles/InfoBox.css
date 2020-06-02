@@ -5,14 +5,16 @@
   margin: 15px 1px;
 }
 .drop-down {
-  border: none;
+  border: solid 1px #8E8D9B;
   position: relative;
   display: inline;
 }
 .drop-down-selection {
   width: 150px;
   left: 0px;
+  padding: 0px;
   background-color: #EAe7dc;
+  color: #E85A4F;
   border: none;
   text-align: center;
 }
@@ -31,9 +33,13 @@
 .option {
   padding: 3px;
   border: none;
-  background-color: grey;
+  background-color: #EAe7dc;
+  color: #E85A4F;
 }
-
+.toggle {
+  display: inline;
+  position: relative;
+}
 .drop-down:hover .drop-down-content {
   display: block;
 }
@@ -42,3 +48,4 @@
   color: #8e8d8a;
   font-weight: 700;
 }
+
