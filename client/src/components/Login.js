@@ -28,7 +28,7 @@ const Login = (props) => {
     try {
       await axios.post('/api/users/login', formData)
       SetError('')
-      // props.history.push('/')
+      props.history.push('/')
     } catch (e) {
       SetError(e.response.data.error)
       alert('not found')

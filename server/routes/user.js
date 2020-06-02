@@ -5,18 +5,15 @@ const auth = require("../middleware/auth");
 
 router.get("/auth", auth, (req, res) => {
   res.status(200).json({
-    _id: req._id,
-    isAuth: true,
-    email: req.user.email,
-    username: req.user.username,
-    role: req.user.role,
+    isAuth: true
   });
 });
 
 router.get("/me", auth, (req, res) => {
   res.status(200).json({
-    isAuth: true,
-    username: req.user.username
+    success: true,
+    username: req.user.username,
+    email: req.user.email
   })
 })
 
