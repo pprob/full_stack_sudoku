@@ -8,6 +8,7 @@ import Signup from "../components/Signup";
 import Login from "../components/Login";
 import ProfilePage from "../components/ProfilePage";
 import HelpLayout from '../components/HelpLayout'
+import DonatePage from '../components/DonatePage'
 import "../styles/App.css";
 
 
@@ -29,7 +30,6 @@ const AppRouter = () => {
   }
   useEffect(() => {
     isLoggedIn()
-
   })
 
   return (
@@ -42,6 +42,7 @@ const AppRouter = () => {
           <Route path="/login" component={Login} />
           <Route path='/profile' render={(props) => <ProfilePage {...props} loggedIn={isAuth}/>}/>
           <Route path='/how-to-play' component={HelpLayout}/>
+          <Route path='/donate' component={DonatePage}/>
         </Switch>
         <Footer />
       </div>

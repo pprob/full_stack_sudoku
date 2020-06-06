@@ -29,6 +29,9 @@ const Navbar = (props) => {
           <li className='list-item'>
             <NavLink to='/how-to-play' className='nav-link' activeClassName='selected'>How to play</NavLink>
           </li>
+          <li className='list-item'>
+            <NavLink to='/donate' className='nav-link' activeClassName='selected'>Donate!</NavLink>
+          </li>
         </ul>
       </div>
     </div>
