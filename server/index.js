@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+require('dotenv').config()
 
 const config = require('./config/key')
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.use('/api/users', require('./routes/user'))
+app.use('/api/payments', require('./routes/payment'))
 
 const port = process.env.PORT || 5000
 

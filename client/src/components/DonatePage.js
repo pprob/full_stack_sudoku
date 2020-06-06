@@ -1,12 +1,13 @@
-import React from 'react'
-import CardForm from './CardForm'
+import React from "react";
+import CardForm from "./CardForm";
 
-const DonatePage = props => {
-
+const DonatePage = (props) => {
   return (
-    <div className='app-body'>
-      <div className='app-container'><CardForm /></div>
+    <div className="app-body">
+      <div className="app-container">
+        <CardForm />
       </div>
-  )
-}
-export default DonatePage
+    </div>
+  );
+};
+export default DonatePage;
