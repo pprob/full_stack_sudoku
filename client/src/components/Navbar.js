@@ -26,6 +26,9 @@ const Navbar = (props) => {
           <li className='list-item'>
             <NavLink to='/leaderboard' className='nav-link' activeClassName='selected'>Leaderboard</NavLink>
           </li>
+          <li className='list-item'>
+            <NavLink to='/how-to-play' className='nav-link' activeClassName='selected'>How to play</NavLink>
+          </li>
         </ul>
       </div>
     </div>

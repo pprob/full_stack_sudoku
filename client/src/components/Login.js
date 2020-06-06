@@ -1,39 +1,39 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 // randomly using hooks for state rather than redux learning purposes
 
 const Login = (props) => {
-  const [email, SetEmail] = useState('')
-  const [password, SetPassword] = useState('')
-  const [error, SetError] = useState('')
+  const [email, SetEmail] = useState("");
+  const [password, SetPassword] = useState("");
+  const [error, SetError] = useState("");
 
   const setEmail = (e) => {
-    SetEmail(e.target.value)
-  }
+    SetEmail(e.target.value);
+  };
 
   const setPassword = (e) => {
-    SetPassword(e.target.value)
-  }
+    SetPassword(e.target.value);
+  };
   const onSubmit = async (e) => {
-    e.preventDefault()
-  
+    e.preventDefault();
+
     const formData = {
       email: email,
-      password: password
-    }
+      password: password,
+    };
 
     try {
-      await axios.post('/api/users/login', formData)
-      SetError('')
-      props.history.push('/')
+      await axios.post("/api/users/login", formData);
+      SetError("");
+      props.history.push("/");
     } catch (e) {
-      SetError(e.response.data.error)
-      alert('not found')
+      SetError(e.response.data.error);
+      alert("not found");
     }
-  }
+  };
 
   return (
     <div className="app-body">
@@ -44,17 +44,23 @@ const Login = (props) => {
         </div>
         <div className="form-container">
           <form onSubmit={onSubmit}>
-            <label className='label'>Email</label>
+            <label className="label">Email</label>
             <input className="field" onChange={setEmail}></input>
-            <label className='label'>Password</label>
-            <input className="field" type='password' onChange={setPassword}></input>
-            <button type='submit'>Login</button>
+            <label className="label">Password</label>
+            <input
+              className="field"
+              type="password"
+              onChange={setPassword}
+            ></input>
+            <button type="submit">Login</button>
           </form>
-          {error && <div>broken
-          </div>}
+          {error && <div>broken</div>}
         </div>
-        
-        <p className='display-signup'>Need to sign up first? click <NavLink to='/signup'>here</NavLink> to take you to the sign up page</p>
+
+        <p className="display-signup">
+          Need to sign up first? click <NavLink to="/signup">here</NavLink> to
+          take you to the sign up page
+        </p>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Signup from "../components/Signup";
 import Login from "../components/Login";
 import ProfilePage from "../components/ProfilePage";
+import HelpLayout from '../components/HelpLayout'
 import "../styles/App.css";
 
 
@@ -40,6 +41,7 @@ const AppRouter = () => {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path='/profile' render={(props) => <ProfilePage {...props} loggedIn={isAuth}/>}/>
+          <Route path='/how-to-play' component={HelpLayout}/>
         </Switch>
         <Footer />
       </div>
