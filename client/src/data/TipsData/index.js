@@ -1,7 +1,7 @@
 export default {
     tip1: {
         title: 'Tip one',
-        tip: 'this is the tip data that is displayed on mouseover'
+        tip: 'Display tip'
     },
     tip2: {
         title: 'Tip two',
