@@ -4,7 +4,7 @@ import { createNewGame} from '../redux/actions/actions'
 import "../styles/Tools.css";
 
 const Tools = props => {
-  const { solve, stop, dispatch, deleteGame, goBack, infoState} = props;
+  const { solve, dispatch, infoState} = props;
   
   return (
     <div className="button-container">
@@ -16,12 +16,6 @@ const Tools = props => {
       </button>
       <button className="button incorrect" onClick={stop}>
         Show incorrect
-      </button>
-      <button className="button delete" onClick={deleteGame}>
-        Delete
-      </button>
-      <button className="button back" onClick={goBack}>
-        Go back
       </button>
     </div>
   );
