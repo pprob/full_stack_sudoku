@@ -36,6 +36,7 @@ const Login = (props) => {
       SetError("");
       dispatch(hasLoaded())
       props.history.push("/");
+      window.location.reload();
     } catch (e) {
       dispatch(hasLoaded())
       SetError(e.response.data.error);

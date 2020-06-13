@@ -5,8 +5,7 @@ import "../styles/Tools.css";
 
 const Tools = props => {
   const { dispatch, infoState, boardState} = props;
-  console.log(boardState)
-
+  
   const createGame = (e) => {
     dispatch(createNewGame(infoState.difficulty))
   }

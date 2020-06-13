@@ -9,6 +9,7 @@ import Login from "../components/Login";
 import ProfilePage from "../components/ProfilePage";
 import HelpLayout from '../components/HelpLayout'
 import DonatePage from '../components/DonatePage'
+import Logout from '../components/Logout'
 import "../styles/App.css";
 
 
@@ -43,6 +44,7 @@ const AppRouter = () => {
           <Route path='/profile' render={(props) => <ProfilePage {...props} loggedIn={isAuth}/>}/>
           <Route path='/how-to-play' component={HelpLayout}/>
           <Route path='/donate' component={DonatePage}/>
+          <Route path='/logout' component={Logout} />
         </Switch>
         <Footer />
       </div>
