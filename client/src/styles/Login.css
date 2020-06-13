@@ -30,3 +30,13 @@
     text-align: center;
     color: #E85A4F;
 }
+
+.submit-button {
+    min-width: 500px;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #E85A4F;
+    background-color: #bbbbb9;
+}

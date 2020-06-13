@@ -60,7 +60,7 @@ const Login = (props) => {
               type="password"
               onChange={setPassword}
             ></input>
-            <button type="submit">Login</button>
+            <button type="submit" className='submit-button'>Login</button>
           </form>
           {error && <div className='error_container'><label>Could not find email/password combination. Please try again.</label></div>}
         </div>
