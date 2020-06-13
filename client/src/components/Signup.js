@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import Loader from '../components/Loader'
 import {
   setEmailField,
   setUsernameField,
   setPasswordField,
   setErrorField,
-  removeErrorField
+  removeErrorField,
+  Loading,
+  hasLoaded
 } from "../redux/actions/signupActions";
 import "../styles/Signup.css";
 import axios from "axios";
@@ -14,7 +17,7 @@ import axios from "axios";
 
 const Signup = (props) => {
   const { signupState, dispatch } = props;
-  const { error, email, password, username } = signupState;
+  const { error, email, password, username, isLoading } = signupState;
 
   const setEmail = (e) => {
     dispatch(setEmailField(e.target.value));
@@ -35,14 +38,16 @@ const Signup = (props) => {
     };
 
     try {
+      dispatch(Loading())
       const response = await axios.post('/api/users/register', requestField)
       if (response.data.success) {
+        dispatch(hasLoaded())
         dispatch(removeErrorField())
         alert('Successfully registered! Taking you to the login page')
         props.history.push('/login')
       }
     } catch (e) {
-      
+      dispatch(hasLoaded())
       const { data } = e.response
       if(data.error.includes('email')) {
         dispatch(setErrorField('This email is already in use, please use a different email'))
@@ -100,8 +105,10 @@ const Signup = (props) => {
             </div>
           </form>
         </div>
+        {isLoading && <Loader />}
       </div>
     </div>
+    
   );
 };
 

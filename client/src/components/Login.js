@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
+import Loader from '../components/Loader'
 import axios from "axios";
+import { Loading, hasLoaded } from '../redux/actions/signupActions'
 
 // randomly using hooks for state rather than redux learning purposes
 
 const Login = (props) => {
+  const { dispatch } = props
+  const { isLoading } = props.signUpState
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const [error, SetError] = useState("");
@@ -26,12 +31,15 @@ const Login = (props) => {
     };
 
     try {
+      dispatch(Loading())
       await axios.post("/api/users/login", formData);
       SetError("");
+      dispatch(hasLoaded())
       props.history.push("/");
     } catch (e) {
+      dispatch(hasLoaded())
       SetError(e.response.data.error);
-      alert("not found");
+      alert("Could not find email/password combination. Please try again");
     }
   };
 
@@ -54,16 +62,22 @@ const Login = (props) => {
             ></input>
             <button type="submit">Login</button>
           </form>
-          {error && <div>broken</div>}
+          {error && <div className='error_container'><label>Could not find email/password combination. Please try again.</label></div>}
         </div>
-
         <p className="display-signup">
           Need to sign up first? click <NavLink to="/signup">here</NavLink> to
           take you to the sign up page
         </p>
+        {isLoading && <Loader />}
       </div>
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    signUpState: state.signupState,
+  }
+}
+
+export default connect(mapStateToProps)(Login);

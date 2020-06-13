@@ -33,3 +33,15 @@ export const removeErrorField = () => {
     type: 'REMOVE_ERROR_FIELD',
   }
 }
+
+export const Loading = () => {
+  return {
+    type: 'IS_LOADING'
+  }
+}
+
+export const hasLoaded = () => {
+  return {
+    type: 'HAS_LOADED'
+  }
+}

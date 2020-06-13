@@ -2,7 +2,8 @@ const defaultState = {
   email: '',
   username: '',
   password: '',
-  error: undefined
+  error: undefined,
+  isLoading: false
 }
 
 
@@ -32,6 +33,16 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         error: undefined
+      }
+    case 'IS_LOADING':
+      return {
+        ...state,
+        isLoading: true
+      }
+    case 'HAS_LOADED':
+      return {
+        ...state,
+        isLoading: false
       }
     default: 
       return state

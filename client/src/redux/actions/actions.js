@@ -28,3 +28,9 @@ export const createNewGame = (difficulty) => {
   }
 }
 
+export const showSolution = () => {
+  return {
+    type: 'SHOW_SOLUTION'
+  }
+}
+

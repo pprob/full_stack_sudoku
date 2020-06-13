@@ -1,28 +1,39 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { createNewGame} from '../redux/actions/actions'
+import { createNewGame, showSolution } from '../redux/actions/actions'
 import "../styles/Tools.css";
 
 const Tools = props => {
-  const { solve, dispatch, infoState} = props;
-  
+  const { dispatch, infoState, boardState} = props;
+  console.log(boardState)
+
+  const createGame = (e) => {
+    dispatch(createNewGame(infoState.difficulty))
+  }
+
+  const displaySolution = (e) => {
+    if (boardState.inPlay) {
+      dispatch(showSolution())
+    } else {
+      alert('Please start a new game first')
+    }
+  }
+
   return (
     <div className="button-container">
-      <button className="button new-game" onClick={e => dispatch(createNewGame(infoState.difficulty))}>
+      <button className="button new-game" onClick={createGame}>
         New Game
       </button>
-      <button className="button solve" onClick={solve}>
+      <button className="button solve" onClick={displaySolution}>
         Solution
-      </button>
-      <button className="button incorrect" onClick={stop}>
-        Show incorrect
       </button>
     </div>
   );
 };
 const mapStateToProps = (state) => {
   return {
-    infoState: state.infoState
+    infoState: state.infoState,
+    boardState: state.boardState
   }
 }
 

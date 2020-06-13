@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types'
 import { connect } from "react-redux"
 import { setActiveCells, setCellValue } from "../redux/actions/actions"
@@ -7,7 +7,8 @@ import "../styles/BoardRow.css";
 //cellValues, activeCells, solvedCellValues, rowIndex, handleChange, setActiveCells
 
 const BoardRow = props => {
-  const { cellValues, solvedCellValues, rowIndex, activeCells, dispatch, feedback } = props;
+  const { cellValues, solvedCellValues, rowIndex, activeCells, dispatch, feedback, boardState } = props;
+ 
   const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const getValue = (row, column) => {
     return cellValues[row][column];
@@ -116,6 +117,7 @@ BoardRow.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
+    boardState: state.boardState,
     cellValues: state.boardState.cellValues,
     solvedCellValues: state.boardState.solvedCellValues,
     activeCells: state.boardState.activeCells,

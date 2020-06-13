@@ -18,7 +18,10 @@ const defaultState = {
   solvedCellValues: [],
   activeCells: [],
   difficulty: 5,
+  inPlay: false,
   feedback: true,
+  gameOver: false,
+  usedSolver: false
 }
 
 export default (state = defaultState, action) => {
@@ -30,6 +33,7 @@ export default (state = defaultState, action) => {
 
       return {
         ...state,
+        inPlay: true,
         cellValues: challengeGrid,
         solvedCellValues: solvedGrid
       }
@@ -46,6 +50,15 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         cellValues: [...currentGrid]
+      }
+    case 'SHOW_SOLUTION':
+      const solvedCellValues = state.solvedCellValues
+      console.log(solvedCellValues)
+      return {
+        ...state,
+        usedSolver: true,
+        gameOver: true,
+        cellValues: solvedCellValues
       }
     default: 
       return state
