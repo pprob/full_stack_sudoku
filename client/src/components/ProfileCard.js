@@ -12,6 +12,9 @@ class ProfileCard extends React.Component {
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   };
+  handleImageClick = async () => {
+    console.log('img clicked')
+  }
   fetchProfile = async () => {
     try {
       // dont need to call /me, can call score end point and populate it with user data
@@ -41,7 +44,7 @@ class ProfileCard extends React.Component {
       <div className="profile-card">
         <div className="top-card"></div>
         <div className="image-container">
-          <img src="https://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png"></img>
+          <img src="https://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png" onClick={this.handleImageClick}></img>
         </div>
         <div className="card-content">
           <h1>{this.state.username}</h1>

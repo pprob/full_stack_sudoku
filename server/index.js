@@ -16,7 +16,6 @@ mongoose.connect(config.mongoURI,
 }).then(() => console.log('MongoDB connected'))
   .catch((e) => console.log(e))
 
-  
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true}))

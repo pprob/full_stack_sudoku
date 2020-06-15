@@ -2,6 +2,21 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const auth = require("../middleware/auth");
+const multer = require('multer')
+
+// Multer config
+
+avatarUpload = multer({
+  limits: {
+    fileSize: 1000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpeg|png|jpg)$/)) {
+      cb(new Error('Please upload a jpeg, png or jpg file'))
+    }
+    cb(null, true)
+  }
+})
 
 router.get("/auth", auth, (req, res) => {
   res.status(200).json({
@@ -17,13 +32,32 @@ router.get("/me", auth, (req, res) => {
   })
 })
 
+router.post('/me/avatar', auth, avatarUpload.single('avatar'), async (req, res) => {
+  req.user.avatar = req.file.buffer
+  await req.user.save()
+  res.status(200).json({
+    success:true
+  })
+}, (error, req, res, next) => {
+  res.status(400).json({
+    error: error.message
+  })
+})
+
+router.delete('/me/avatar', auth, async (req, res) => {
+  req.user.avatar = undefined
+  await req.user.save()
+  res.status(200).json({
+    success: true
+  })
+})
+
 router.post("/register", async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
     return res.status(200).json({
       success: true,
-      user,
     });
   } catch (e) {
     return res.status(500).json({

@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
   tokenExpiration: {
     type: Number,
   },
+  avatar: {
+    type: Buffer
+  }
 });
 
 userSchema.pre("save", async function (next) {
