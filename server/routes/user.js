@@ -39,6 +39,7 @@ router.post('/me/avatar', auth, avatarUpload.single('avatar'), async (req, res) 
     success:true
   })
 }, (error, req, res, next) => {
+  console.log(error.message)
   res.status(400).json({
     error: error.message
   })

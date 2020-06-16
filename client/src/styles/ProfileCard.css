@@ -8,14 +8,23 @@
 .image-container {
   position: relative;
 }
-.image-container img {
-  width: 100px;
+.image-upload {
   position: absolute;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
   z-index: 1;
   top: -50px;
   left: 150px;
+}
+.image-upload > input {
+  display: none;
+}
+.image-container img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
 .top-card {
@@ -38,3 +47,5 @@
   background-color: #E85A4F;
   justify-content: center;
 }
+
+

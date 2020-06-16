@@ -3,18 +3,45 @@ import axios from "axios";
 import "../styles/ProfileCard.css";
 
 class ProfileCard extends React.Component {
-  //Change state to API call after making player card - test values for now
   state = {
     loaded: true,
     error: undefined,
-    email: "test@test.com",
-    username: "testuser12345",
+    email: undefined,
+    username: undefined,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    avatarFile: undefined,
   };
-  handleImageClick = async () => {
-    console.log('img clicked')
+  setAvatarState = (e) => {
+    this.setState({
+      avatarFile: e.target.files[0]
+    })
+  };
+  handleAvatarUpload = async () => {
+    const formData = new FormData()
+    formData.append('avatar', this.state.avatarFile)
+    try {
+      const response = await axios.post('/api/users/me/avatar', formData)
+      if(response.data.success) {
+        this.setState({
+          avatarFile: undefined,
+          error: undefined
+        })
+      }
+    } catch (e) {
+      console.log(e.response.data)
+      this.setState({
+        avatarFile: undefined,
+        error: e.response.data.error
+      })
+    }
   }
+  componentDidUpdate = () => {
+    if (this.state.avatarFile) {
+      this.handleAvatarUpload()
+    }
+  }
+
   fetchProfile = async () => {
     try {
       // dont need to call /me, can call score end point and populate it with user data
@@ -26,13 +53,17 @@ class ProfileCard extends React.Component {
             error: undefined,
             email: response.data.email,
             username: response.data.username,
+            avatarFile: undefined,
           };
         });
       }
     } catch (e) {
       this.setState((state) => ({
         loaded: false,
-        error: "Could not fetch profile",
+        avatarFile: undefined,
+        email: undefined,
+        username: undefined,
+        error: e.message,
       }));
     }
   };
@@ -44,24 +75,34 @@ class ProfileCard extends React.Component {
       <div className="profile-card">
         <div className="top-card"></div>
         <div className="image-container">
-          <img src="https://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png" onClick={this.handleImageClick}></img>
+          <div className="image-upload">
+            <label htmlFor="file-input">
+              <img src="https://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png" />
+            </label>
+            <input
+              type="file"
+              id="file-input"
+              name="file"
+              onChange={this.setAvatarState}
+            />
+          </div>
         </div>
         <div className="card-content">
           <h1>{this.state.username}</h1>
           <h2>{this.state.email}</h2>
           <h3>{this.state.description}</h3>
         </div>
-        <div className='contact-details'>
+        <div className="contact-details">
           <div>test</div>
           <div>test</div>
           <div>test</div>
         </div>
+        {this.state.error && (
+          <div>{this.state.error}</div>
+        )}
       </div>
     );
   };
-  // componentDidMount = () => {
-  //     this.fetchProfile()
-  // };
 
   render() {
     console.log(this.state);
