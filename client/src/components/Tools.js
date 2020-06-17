@@ -1,20 +1,24 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { createNewGame, showSolution } from '../redux/actions/actions'
+import { useAlert } from 'react-alert'
 import "../styles/Tools.css";
 
 const Tools = props => {
   const { dispatch, infoState, boardState} = props;
+
+  const customAlert = useAlert()
   
   const createGame = (e) => {
     dispatch(createNewGame(infoState.difficulty))
   }
 
   const displaySolution = (e) => {
+    customAlert.show('Using the solver invalidates your chance of a clean victory!')
     if (boardState.inPlay) {
       dispatch(showSolution())
     } else {
-      alert('Please start a new game first')
+      customAlert.error('Please start a new game first')
     }
   }
 

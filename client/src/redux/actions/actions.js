@@ -34,3 +34,9 @@ export const showSolution = () => {
   }
 }
 
+export const gameWon = () => {
+  return {
+    type: 'GAME_WON'
+  }
+}
+

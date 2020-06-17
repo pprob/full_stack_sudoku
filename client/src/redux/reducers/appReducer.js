@@ -19,9 +19,8 @@ const defaultState = {
   activeCells: [],
   difficulty: 5,
   inPlay: false,
-  feedback: true,
   gameOver: false,
-  usedSolver: false
+  usedSolver: false,
 }
 
 export default (state = defaultState, action) => {
@@ -59,6 +58,11 @@ export default (state = defaultState, action) => {
         usedSolver: true,
         gameOver: true,
         cellValues: solvedCellValues
+      }
+    case 'GAME_WON':
+      return {
+        ...state,
+        gameOver: true
       }
     default: 
       return state

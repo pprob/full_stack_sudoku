@@ -7,12 +7,12 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch(action.type) {
     case 'SET_DIFFICULTY':
-      console.log(state)
       return {
         ...state,
         difficulty: action.value
       }
     case 'SET_FEEDBACK':
+      console.log(action.value)
       return {
         ...state,
         feedback: action.value
