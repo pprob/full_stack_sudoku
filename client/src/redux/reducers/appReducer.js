@@ -21,6 +21,7 @@ const defaultState = {
   inPlay: false,
   gameOver: false,
   usedSolver: false,
+  gameDifficulty: undefined
 }
 
 export default (state = defaultState, action) => {
@@ -34,7 +35,8 @@ export default (state = defaultState, action) => {
         ...state,
         inPlay: true,
         cellValues: challengeGrid,
-        solvedCellValues: solvedGrid
+        solvedCellValues: solvedGrid,
+        gameDifficulty: action.difficulty
       }
     case 'SET_ACTIVE_CELLS':
       const activeCells = []

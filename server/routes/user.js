@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
 const auth = require("../middleware/auth");
 const multer = require('multer')
+const sharp = require('sharp')
+const User = require("../models/User");
+const UserScore = require('../models/Game')
 
 // Multer config
 
@@ -33,7 +35,10 @@ router.get("/me", auth, (req, res) => {
 })
 
 router.post('/me/avatar', auth, avatarUpload.single('avatar'), async (req, res) => {
-  req.user.avatar = req.file.buffer
+  const buffer = await sharp(req.file.buffer).resize({ width: 200, height: 200 }).png().toBuffer()
+
+  req.user.avatar = buffer
+
   await req.user.save()
   res.status(200).json({
     success:true
@@ -52,11 +57,32 @@ router.delete('/me/avatar', auth, async (req, res) => {
     success: true
   })
 })
+// get own avatar
+router.get('/me/avatar', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+    if (!user || !user.avatar) {
+      throw new Error()
+    }
+    res.set('Content-type', 'image/png')
+    res.send(user.avatar)
+  } catch (e) {
+    res.status(404)
+  }
+})
+
+// Get other users avatar
+router.get('users/:id/avatar', (req, res) => {
+
+})
 
 router.post("/register", async (req, res) => {
   try {
     const user = new User(req.body);
+    const userId = user._id
+    const userStats = new UserScore({ user: userId });
     await user.save();
+    await userStats.save()
     return res.status(200).json({
       success: true,
     });

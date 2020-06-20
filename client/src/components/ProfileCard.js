@@ -11,6 +11,7 @@ class ProfileCard extends React.Component {
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     avatarFile: undefined,
+    avatarURL: undefined
   };
   setAvatarState = (e) => {
     this.setState({
@@ -36,9 +37,13 @@ class ProfileCard extends React.Component {
       })
     }
   }
+  componentDidMount = () => {
+    this.fetchProfile()
+  }
   componentDidUpdate = () => {
     if (this.state.avatarFile) {
       this.handleAvatarUpload()
+      this.fetchProfile()
     }
   }
 
@@ -46,6 +51,7 @@ class ProfileCard extends React.Component {
     try {
       // dont need to call /me, can call score end point and populate it with user data
       const response = await axios.get("api/users/me");
+      const avatarUrl = `/api/users/me/avatar`
       if (response.data.success) {
         this.setState((state) => {
           return {
@@ -54,6 +60,7 @@ class ProfileCard extends React.Component {
             email: response.data.email,
             username: response.data.username,
             avatarFile: undefined,
+            avatarURL: avatarUrl
           };
         });
       }
@@ -77,7 +84,7 @@ class ProfileCard extends React.Component {
         <div className="image-container">
           <div className="image-upload">
             <label htmlFor="file-input">
-              <img src="https://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png" />
+              <img src={this.state.avatarURL} />
             </label>
             <input
               type="file"
@@ -105,7 +112,6 @@ class ProfileCard extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <React.Fragment>
         {!this.state.loaded && this.renderLoader()}

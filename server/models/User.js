@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  description: {
+    type: String,
+    trim: true
+  },
   token: {
     type: String,
   },
@@ -32,6 +36,13 @@ const userSchema = new mongoose.Schema({
     type: Buffer
   }
 });
+
+// virtual property
+userSchema.virtual('score', {
+  ref: 'Score',
+  localField: '_id',
+  foreignField: 'user'
+})
 
 userSchema.pre("save", async function (next) {
   const user = this;

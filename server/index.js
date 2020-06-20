@@ -24,6 +24,7 @@ app.use(cookieParser())
 
 app.use('/api/users', require('./routes/user'))
 app.use('/api/payments', require('./routes/payment'))
+app.use('/api/scores', require('./routes/score'))
 
 const port = process.env.PORT || 5000
 
