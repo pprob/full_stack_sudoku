@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setActiveCells, setCellValue } from "../redux/actions/actions";
 import { useAlert } from "react-alert";
+import axios from 'axios'
 import "../styles/BoardRow.css";
 
-//cellValues, activeCells, solvedCellValues, rowIndex, handleChange, setActiveCells
 
 const BoardRow = (props) => {
   const {
@@ -17,7 +17,7 @@ const BoardRow = (props) => {
     feedback,
     boardState,
   } = props;
-  const { inPlay } = boardState;
+  const { inPlay, gameDifficulty } = boardState;
   const customAlert = useAlert();
 
   const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -37,11 +37,17 @@ const BoardRow = (props) => {
     }
     return hasWon;
   };
+  const updateScore = async () => {
+    const update = {
+      difficulty: gameDifficulty
+    }
+    axios.patch('/api/scores/update-score')
+  }
   useEffect(() => {
     if (inPlay) {
       const gameWon = checkGameOver();
       if (gameWon) {
-        alert(`YES! YOU WON. IF YOU'RE LOGGED IN WE'LL TRACK YOUR WINS`)
+        customAlert.success(`Congratulations! You won! If you're logged in, we'll track your scores!`)
       }
     }
   });

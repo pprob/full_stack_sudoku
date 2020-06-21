@@ -21,7 +21,7 @@ const defaultState = {
   inPlay: false,
   gameOver: false,
   usedSolver: false,
-  gameDifficulty: undefined
+  gameDifficulty: 5
 }
 
 export default (state = defaultState, action) => {

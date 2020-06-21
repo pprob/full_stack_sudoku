@@ -11,7 +11,8 @@ class ProfileCard extends React.Component {
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     avatarFile: undefined,
-    avatarURL: undefined
+    avatarURL: undefined,
+    scoreCard: undefined
   };
   setAvatarState = (e) => {
     this.setState({
@@ -50,7 +51,7 @@ class ProfileCard extends React.Component {
   fetchProfile = async () => {
     try {
       // dont need to call /me, can call score end point and populate it with user data
-      const response = await axios.get("api/users/me");
+      const response = await axios.get("api/scores/my-score");
       const avatarUrl = `/api/users/me/avatar`
       if (response.data.success) {
         this.setState((state) => {
@@ -60,7 +61,8 @@ class ProfileCard extends React.Component {
             email: response.data.email,
             username: response.data.username,
             avatarFile: undefined,
-            avatarURL: avatarUrl
+            avatarURL: avatarUrl,
+            scoreCard: response.data.scoreCard
           };
         });
       }
@@ -112,6 +114,7 @@ class ProfileCard extends React.Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <React.Fragment>
         {!this.state.loaded && this.renderLoader()}
