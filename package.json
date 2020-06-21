@@ -4,7 +4,7 @@
   "description": "Sudoku project by Paul",
   "main": "index.js",
   "engine": {
-    "node": "12.16.3",
+    "node": "12.18.0",
     "npm": "6.14.4"
   },
   "scripts": {
