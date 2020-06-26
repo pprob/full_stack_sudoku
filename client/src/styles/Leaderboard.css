@@ -1,0 +1,25 @@
+.leaderboard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leaderboard__container .header__container {
+  flex-grow: 1;
+  text-align: center;
+}
+.leaderboard-header {
+  color: #E85A4F;
+}
+
+.leaderboard-subtitle {
+  color: #8E8D8A;
+}
+
+.loader-placement .loader__container{
+  position: unset;
+}
+
+.loader-placement > .loader__container > .loader {
+  bottom: 0px;
+}

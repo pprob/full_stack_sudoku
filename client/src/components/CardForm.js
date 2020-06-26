@@ -42,8 +42,8 @@ const CardForm = (props) => {
   return (
     <form className="checkout__form__container" onSubmit={onSubmit}>
       <CardSection />
-      <button type="submit" disabled={!stripe}>
-        Confirm order
+      <button type="submit" className='submit-button-stripe' disabled={!stripe}>
+        Confirm payment
       </button>
     </form>
   );

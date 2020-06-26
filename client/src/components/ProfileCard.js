@@ -8,8 +8,7 @@ class ProfileCard extends React.Component {
     error: undefined,
     email: undefined,
     username: undefined,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: undefined,
     avatarFile: undefined,
     avatarURL: undefined,
     scoreCard: undefined

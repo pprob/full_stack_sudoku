@@ -34,7 +34,7 @@
     height: 100%;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-color: aquamarine;
+    background-color: #d3d0c6;
     /*For mozilla*/
     -webkit-backface-visibility: hidden;
 }

@@ -12,7 +12,6 @@ export default (state = defaultState, action) => {
         difficulty: action.value
       }
     case 'SET_FEEDBACK':
-      console.log(action.value)
       return {
         ...state,
         feedback: action.value

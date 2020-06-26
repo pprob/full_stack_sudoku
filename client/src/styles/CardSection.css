@@ -1,17 +1,16 @@
 .StripeElement {
-  height: 400px;
+  box-sizing: border-box;
+  height: 50px;
   padding: 10px 12px;
-  width: 100%;
-  color: #32325d;
-  background-color: white;
+
   border: 1px solid transparent;
-  border-radius: 4px;
 
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 3px 100px 0 #e6ebf1;
   transition: box-shadow 150ms ease;
+  margin: 20px 0px;
 }
-
 .StripeElement--focus {
   box-shadow: 0 1px 3px 0 #cfd7df;
 }
@@ -22,4 +21,10 @@
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.donate-label {
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 100px;
 }

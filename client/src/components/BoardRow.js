@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setActiveCells, setCellValue } from "../redux/actions/actions";
 import { useAlert } from "react-alert";
-import axios from 'axios'
 import "../styles/BoardRow.css";
-
 
 const BoardRow = (props) => {
   const {
@@ -17,40 +15,13 @@ const BoardRow = (props) => {
     feedback,
     boardState,
   } = props;
-  const { inPlay, gameDifficulty } = boardState;
+  
   const customAlert = useAlert();
-
   const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const getValue = (row, column) => {
     return cellValues[row][column];
   };
 
-  const checkGameOver = () => {
-    var hasWon = true;
-    for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
-        if (cellValues[i][j] !== solvedCellValues[i][j]) {
-          hasWon = false;
-          break;
-        }
-      }
-    }
-    return hasWon;
-  };
-  const updateScore = async () => {
-    const update = {
-      difficulty: gameDifficulty
-    }
-    axios.patch('/api/scores/update-score')
-  }
-  useEffect(() => {
-    if (inPlay) {
-      const gameWon = checkGameOver();
-      if (gameWon) {
-        customAlert.success(`Congratulations! You won! If you're logged in, we'll track your scores!`)
-      }
-    }
-  });
   const isInPlay = (activeCells, row, column) => {
     const isSameAsActive =
       row === activeCells[0] && column === activeCells[1] ? true : false;

@@ -7,7 +7,7 @@ const HelpLayout = () => {
   return (
     <div className="app-body">
       <div className="app-container">
-        <div className="how-to__container">How to play goes here</div>
+        <div className="how-to__container">Mouse over tips to reveal them</div>
         <div className="tips__container">
           {Object.keys(tipsData).map((key, index) => {
             const data = tipsData[key];

@@ -11,7 +11,7 @@ router.patch('/update-score', auth, async (req, res) => {
     
     const stringDifficulty = `difficulty.${convertNumToString(difficulty)}`
     console.log(stringDifficulty)
-    const scoreCard = await UserScore.findOneAndUpdate({ user: userId }, { $inc: { stringDifficulty: 1 }}, { useFindAndModify: false })
+    const scoreCard = await UserScore.findOneAndUpdate({ user: userId }, { $inc: { [stringDifficulty] : 1 }}, { useFindAndModify: false })
     console.log(scoreCard)
     res.status(204).json({
       success: true

@@ -23,7 +23,7 @@ const cardElementOptions = {
 const CardSection = (props) => {
   return (
     <React.Fragment>
-      <label>Card details</label>
+      <label className='donate-label'>If you'd like to donate, you can so with a debit or credit card below</label>
       <CardElement style={cardElementOptions} />
     </React.Fragment>
   );

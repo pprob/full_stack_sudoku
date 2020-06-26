@@ -54,7 +54,6 @@ export default (state = defaultState, action) => {
       }
     case 'SHOW_SOLUTION':
       const solvedCellValues = state.solvedCellValues
-      console.log(solvedCellValues)
       return {
         ...state,
         usedSolver: true,
