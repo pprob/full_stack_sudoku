@@ -17,3 +17,7 @@
   margin-right: 5px;
 }
 
+.button:hover {
+  background-color: #bbb9b0;
+}
+

@@ -12,6 +12,7 @@ import {
 } from "../redux/actions/signupActions";
 import "../styles/Signup.css";
 import axios from "axios";
+import validator from 'validator';
 
 //state for email/username/password
 
@@ -31,6 +32,14 @@ const Signup = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    if (!validator.isEmail(email)) {
+      return dispatch(setErrorField('Please use a valid email address'))
+    } else if (password.length < 6) {
+      return dispatch(setErrorField('Please use a password longer than 6 characters'))
+    } else if (password.toLowerCase().includes('password')) {
+      return dispatch(setErrorField('Your password cannot contain the "password"'))
+    }
+
     const requestField = {
       email: email,
       username: username,
@@ -49,8 +58,10 @@ const Signup = (props) => {
     } catch (e) {
       dispatch(hasLoaded())
       const { data } = e.response
+      console.log(data)
       if(data.error.includes('email')) {
-        dispatch(setErrorField('This email is already in use, please use a different email'))
+
+        dispatch(setErrorField('This email is already in use or not valid, please use a different email'))
       } else if(data.error.includes('username')) {
         dispatch(setErrorField('This username has already been taken. Please choose a different username'))
       } else {

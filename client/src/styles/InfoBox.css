@@ -18,6 +18,9 @@
   border: none;
   text-align: center;
 }
+.drop-down-selection:hover {
+  background-color: #bbb9b0;
+}
 
 .drop-down-content {
   display: none;
@@ -35,6 +38,9 @@
   border: none;
   background-color: #EAe7dc;
   color: #E85A4F;
+}
+.option:hover {
+  background-color: #bbb9b0;
 }
 .toggle {
   display: inline;

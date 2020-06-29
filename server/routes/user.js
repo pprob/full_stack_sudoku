@@ -6,6 +6,7 @@ const sharp = require('sharp')
 const User = require("../models/User");
 const UserScore = require('../models/Game')
 
+
 // Multer config
 
 avatarUpload = multer({
@@ -87,6 +88,7 @@ router.post("/register", async (req, res) => {
       success: true,
     });
   } catch (e) {
+    console.log(e)
     return res.status(500).json({
       success: false,
       error: e.message

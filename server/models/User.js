@@ -2,21 +2,32 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
+const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
     unique: 1,
+    validate: function(v) {
+      if(!validator.isEmail(v)) {
+        throw new Error('Please use a valid email address')
+      }
+    }
   },
   username: {
     type: String,
     unique: 1,
-    maxLength: 15,
   },
   password: {
     type: String,
-    minLength: 8,
+    validate: function(v) {
+      if (v.toLowerCase().includes('password')) {
+        throw new Error('Your password cannot contain the word password')
+      } else if (v.length < 6) {
+        throw new Error('Your password must be longer than 8 characters in length')
+      }
+    }
   },
   role: {
     type: Number,
