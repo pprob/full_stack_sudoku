@@ -5,6 +5,7 @@ const User = require('../models/User')
 const auth = require("../middleware/auth");
 const convertNumToString = require('../utils/convertNumToString/convertNumToString')
 
+//updates score when user wins game
 router.patch('/update-score', auth, async (req, res) => {
     const userId = req.user._id
     const difficulty = parseInt(req.body.difficulty)
@@ -18,6 +19,7 @@ router.patch('/update-score', auth, async (req, res) => {
     })
 })
 
+//gets user scorecard
 router.get("/my-score", auth, async (req, res) => {
   const userId = req.user._id;
   try {

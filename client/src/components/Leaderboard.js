@@ -22,6 +22,10 @@ const Leaderboard = () => {
                 This is the leaderboard for most wins. Only difficulty levels of
                 10 are considered in the leaderboard.
               </h3>
+              <div className='leaderboard-container'>
+                
+              </div>
+
             </div>
             <div className="table__container"></div>
           </div>

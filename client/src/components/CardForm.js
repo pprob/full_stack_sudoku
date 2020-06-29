@@ -26,7 +26,6 @@ const CardForm = (props) => {
           }
         }
       })
-      console.log(result)
       if (result.error) {
         alert('failed to pay')
       } else {
