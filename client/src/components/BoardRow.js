@@ -13,7 +13,6 @@ const BoardRow = (props) => {
     activeCells,
     dispatch,
     feedback,
-    boardState,
   } = props;
   
   const customAlert = useAlert();
