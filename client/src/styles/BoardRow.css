@@ -33,3 +33,10 @@
 .grid-border-bottom {
     border-bottom: solid 2px black;
 }
+
+@media screen and (max-width: 600px) {
+    .square-input {
+        height: 30px;
+        width: 30px
+    }
+}

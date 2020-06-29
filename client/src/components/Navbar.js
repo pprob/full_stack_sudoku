@@ -7,8 +7,8 @@ const Navbar = (props) => {
   return (
     <div className="app-container">
       <div className="navbar-container">
-        <ul className="nav-list">
-          <li className="list-item">
+        <div className="nav-list">
+          <div className="list-item">
             <NavLink
               to="/"
               className="nav-link"
@@ -17,9 +17,9 @@ const Navbar = (props) => {
             >
               Game
             </NavLink>
-          </li>
+          </div>
           {!loggedIn && (
-            <li className="list-item">
+            <div className="list-item">
               <NavLink
                 to="/signup"
                 className="nav-link"
@@ -27,10 +27,10 @@ const Navbar = (props) => {
               >
                 Sign up
               </NavLink>
-            </li>
+            </div>
           )}
           {!loggedIn && (
-            <li className="list-item">
+            <div className="list-item">
               <NavLink
                 to="/login"
                 className="nav-link"
@@ -38,10 +38,10 @@ const Navbar = (props) => {
               >
                 Login
               </NavLink>
-            </li>
+            </div>
           )}
           {loggedIn && (
-            <li className="list-item">
+            <div className="list-item">
               <NavLink
                 to="/profile"
                 className="nav-link"
@@ -49,9 +49,9 @@ const Navbar = (props) => {
               >
                 Your profile
               </NavLink>
-            </li>
+            </div>
           )}
-          <li className="list-item">
+          <div className="list-item">
             <NavLink
               to="/leaderboard"
               className="nav-link"
@@ -59,8 +59,8 @@ const Navbar = (props) => {
             >
               Leaderboard
             </NavLink>
-          </li>
-          <li className="list-item">
+          </div>
+          <div className="list-item">
             <NavLink
               to="/how-to-play"
               className="nav-link"
@@ -68,8 +68,8 @@ const Navbar = (props) => {
             >
               How to play
             </NavLink>
-          </li>
-          <li className="list-item">
+          </div>
+          <div className="list-item">
             <NavLink
               to="/donate"
               className="nav-link"
@@ -77,15 +77,15 @@ const Navbar = (props) => {
             >
               Donate!
             </NavLink>
-          </li>
+          </div>
           {loggedIn && (
-            <li className="list-item">
+            <div className="list-item">
               <NavLink to="/logout" className="nav-link" activeClassName="selected">
                 Logout
               </NavLink>
-            </li>
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     </div>
   );
