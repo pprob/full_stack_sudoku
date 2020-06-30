@@ -9,17 +9,16 @@ import "../styles/Board.css";
 const Board = props => {
   const { boardState } = props
   const { inPlay, gameDifficulty, usedSolver, cellValues, solvedCellValues } = boardState
-  console.log(inPlay, gameDifficulty, usedSolver)
   const nineArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  console.log(boardState)
-
+  
   const customAlert = useAlert();
 
   const updateScore = async () => {
     const update = {
       difficulty: gameDifficulty
     }
-    return await axios.patch('/api/scores/update-score', update)
+    await axios.patch('/api/scores/update-score', update)
+    return
   }
 
   const checkGameOver = () => {
@@ -39,8 +38,7 @@ const Board = props => {
     if (inPlay) {
       const gameWon = checkGameOver();
       if (gameWon && !usedSolver) {
-        const response = updateScore()
-        console.log(response)
+        updateScore()
         customAlert.success(`Congratulations! You won! If you're logged in, we'll track your scores!`)
       }
     }

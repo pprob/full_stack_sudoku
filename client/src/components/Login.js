@@ -42,6 +42,7 @@ const Login = (props) => {
       SetError(e.response.data.error);
       alert("Could not find email/password combination. Please try again");
     }
+    return
   };
 
   return (
