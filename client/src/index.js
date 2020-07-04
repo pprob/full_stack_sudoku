@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import appReducer from "./redux/reducers/appReducer";
 import "./index.css";
 import AppRouter from "./routers/AppRouter";
+import appReducer from "./redux/reducers/appReducer";
 import infoReducer from "./redux/reducers/infoReducer";
 import signupReducer from "./redux/reducers/signupReducer";
+import playerScoresReducer from "./redux/reducers/playerScores"
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import AlertTemplate from "react-alert-template-basic";
@@ -26,6 +27,7 @@ const reducer = () => {
     boardState: appReducer,
     infoState: infoReducer,
     signupState: signupReducer,
+    playerScoresState: playerScoresReducer
   });
 };
 const store = createStore(reducer());

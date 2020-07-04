@@ -1,31 +1,48 @@
 import React, { useEffect, useState } from "react";
+import { connect } from 'react-redux'
 import axios from "axios";
 import "../styles/Leaderboard.css";
 import Loader from "./Loader";
 import LeaderboardRow from './LeaderboardRow'
+import { setPlayerScores, setFilter } from '../redux/actions/playerScoreActions'
+import filterPlayerScores from '../utils/filterPlayerScores/filterPlayerScores'
 
-const Leaderboard = () => {
+const Leaderboard = (props) => {
+  const { dispatch, playerScores } = props
+
   const [loaded, setLoaded] = useState(false);
-  const [userScores, setUserScores] = useState([]);
-
+  
+  
   const fetchLeaderboard = async () => {
     try {
       const response = await axios.get("/api/scores/leaderboard");
-      const filteredScores = filterLeaderboardScores(response.data.userData)
-      setUserScores([...filteredScores])
+      const filteredScores = filterLeaderboardScoresByRank(response.data.userData)
+      const rankedFilteredScores = filteredScores.map((player, index) => {
+        return {
+          ...player,
+          rank: index + 1
+        }
+      })
+      dispatch(setPlayerScores([...rankedFilteredScores]))
       return setLoaded(true)
     } catch (e) {
-      console.log(e.message);
+    
     }
   };
-
-  const filterLeaderboardScores = (scores) => {
-    return scores.filter((score) => score.wins > 0)
+  const filterLeaderboardScoresByRank = (scores) => {
+    const filteredScores = scores.filter((score) => score.wins > 0).sort((a, b) => b.wins - a.wins)
+    return filteredScores
   }
+
+  const handlePlayerFilter = (e) => {
+    const value = e.target.value
+    dispatch(setFilter(value))
+  }
+
   useEffect(() => {
     fetchLeaderboard();
   }, []);
-  console.log(userScores)
+  
   return (
     <div className="app-body">
       <div className="app-container">
@@ -43,16 +60,16 @@ const Leaderboard = () => {
                 10 are considered in the leaderboard.
               </h3>
             </div>
-            <div className="leaderboard-table">
+            <div className="leaderboard-table__container">
               <nav className="search">
                 <div className="search-title">
                   <h1>Current Standings</h1>
                 </div>
                 <div className="search-bar">
-                  <input type="search" placeholder="Search player..."></input>
+                  <input type="search" placeholder="Search player..." onChange={handlePlayerFilter}></input>
                 </div>
               </nav>
-              <table>
+              <table className='leaderboard-table'>
                 <thead>
                   <tr>
                     <th>Rank</th>
@@ -61,11 +78,8 @@ const Leaderboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {userScores.map((user, index) => {
-                    const rank = index + 1
-                    const userName = user.userName
-                    const wins = user.wins
-                    return <LeaderboardRow rank={rank} userName={userName} key={index} wins={wins}/>
+                  {playerScores?.map((user, index) => {
+                    return <LeaderboardRow rank={user.rank} userName={user.userName} key={index} wins={user.wins}/>
                   })}
                 </tbody>
               </table>
@@ -77,4 +91,12 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+const mapStateToProps = (state) => {
+  const playerScoreState = state.playerScoresState
+  console.log(filterPlayerScores(playerScoreState.userScores, playerScoreState.nameFilter))
+  return {
+    playerScores: filterPlayerScores(playerScoreState.userScores, playerScoreState.nameFilter)
+  }
+}
+
+export default connect(mapStateToProps)(Leaderboard);
