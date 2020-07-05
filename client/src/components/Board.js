@@ -4,10 +4,11 @@ import BoardRow from "./BoardRow";
 import axios from 'axios'
 import { useAlert } from "react-alert";
 import "../styles/Board.css";
+import { createNewGame } from '../redux/actions/actions'
 
 
 const Board = props => {
-  const { boardState } = props
+  const { boardState, dispatch } = props
   const { inPlay, gameDifficulty, usedSolver, cellValues, solvedCellValues } = boardState
   const nineArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   
@@ -40,6 +41,10 @@ const Board = props => {
       if (gameWon && !usedSolver) {
         updateScore()
         customAlert.success(`Congratulations! You won! If you're logged in, we'll track your scores!`)
+        setTimeout(() => {
+          customAlert.info('Creating a new game!')
+          dispatch(createNewGame(gameDifficulty))
+        }, 2000)
       }
     }
   });
