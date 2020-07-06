@@ -93,7 +93,6 @@ const Leaderboard = (props) => {
 
 const mapStateToProps = (state) => {
   const playerScoreState = state.playerScoresState
-  console.log(filterPlayerScores(playerScoreState.userScores, playerScoreState.nameFilter))
   return {
     playerScores: filterPlayerScores(playerScoreState.userScores, playerScoreState.nameFilter)
   }

@@ -30,7 +30,6 @@ class ProfileCard extends React.Component {
         })
       }
     } catch (e) {
-      console.log(e.response.data)
       this.setState({
         avatarFile: undefined,
         error: e.response.data.error
@@ -113,7 +112,6 @@ class ProfileCard extends React.Component {
   };
 
   render() {
-    console.log(this.state)
     return (
       <React.Fragment>
         {!this.state.loaded && this.renderLoader()}

@@ -58,7 +58,6 @@ const Signup = (props) => {
     } catch (e) {
       dispatch(hasLoaded())
       const { data } = e.response
-      console.log(data)
       if(data.error.includes('email')) {
 
         dispatch(setErrorField('This email is already in use or not valid, please use a different email'))
