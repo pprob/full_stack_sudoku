@@ -28,13 +28,13 @@
 }
 
 .top-card {
-  width: 400px;
+  width: 100%;
   height: 100px;
   background-color: #E85A4F;
 }
 
 .card-content {
-  width: 400px;
+  width: 100%;
   height: 500px;
   background-color: white;
   padding-top: 100px;
@@ -48,4 +48,18 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 600px) {
+  .profile-card {
+    width: 350px;
+  }
+  .image-upload {
+    left: 125px;
+  }
+  .card-content h1 {
+    font-size: 28px;
+  }
+  .card-content h2 {
+    font-size: 20px;
+  }
+}
 
