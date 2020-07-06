@@ -27,3 +27,9 @@
   font-weight: 800;
   color: #e85A4F;
 }
+
+@media screen and (max-width: 600px) {
+  .nav-link {
+    font-size: 14px;
+  }
+}

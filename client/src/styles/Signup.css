@@ -1,6 +1,7 @@
 .header {
   text-align: center;
   margin-top: 50px;
+  width: 100%;
 }
 .signup-header {
   color: #E85A4F;
@@ -16,7 +17,7 @@
 
 .field {
   display: block;
-  width: 500px;
+  width: 100%;
   margin: 10px 0px;
   border-radius: 5px;
   padding: 7.5px 5px;
@@ -34,7 +35,13 @@
   border-radius: 10px;
   border: 1px solid #E85A4F;
   padding: 20px;
+  width: 100%;
+  margin: 0 auto;
 }
+.form-container form {
+  
+}
+
 .submit-button-container {
   margin-top: 30px;
   text-align: center;
@@ -44,7 +51,6 @@
   color: #E85A4F;
 }
 .submit-button {
-  min-width: 500px;
   padding: 5px;
   cursor: pointer;
   border-radius: 5px;
@@ -55,4 +61,19 @@
 .label {
   font-weight: 700;
   color: black;
+}
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 350px;
+    margin-bottom: 10px;
+  }
+  .signup-header {
+    font-size: 24px;
+  }
+  .signup-subtitle {
+    font-size: 20px;
+  }
+  .signup-subtitle-second {
+    font-size: 16px;
+  }
 }
