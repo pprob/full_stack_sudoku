@@ -20,7 +20,7 @@ After cloning the application to your local machine using git clone. Run
 in both the root directory and client directory to install all the required dependencies.
 
 ### Running the app
-In the root of the project directory, start the client & server by simply runnning 
+In the root of the project directory, start the client & server by simply running 
 
 ```npm run```
 
