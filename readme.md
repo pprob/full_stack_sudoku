@@ -1,6 +1,6 @@
 # Sudokuact
 
-Sudokuact is a mini fullstack (MERN) JavaScript application where users can play sudoku with varying difficulty levels! The site also features a sign up/login system and tracks userscores for signed in users.
+Sudokuact is a mini fullstack (MERN) JavaScript application where users can play sudoku with varying difficulty levels! The site also features a sign up/login system and tracks userscores for signed in users. Then name comes from a combination of Sudoku + React. 
 
 ## Getting started
 
@@ -14,9 +14,12 @@ For full website functionality, you will need to supply your own DB URI as an en
 
 ### Dependencies
 After cloning the application to your local machine using git clone. Run 
+
 ```npm install```
+
 in both the root directory and client directory
 
 ### Running the app
 In the root of the project directory, start the client & server by simply runnning 
+
 ```npm run```
