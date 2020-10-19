@@ -9,7 +9,7 @@ import "../styles/InfoBox.css";
 const InfoBox = (props) => {
   const { difficulty, feedback, dispatch } = props;
   const difficultyLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  
   return (
     <div className="info-box">
       <div className="app-container">
@@ -47,9 +47,7 @@ const InfoBox = (props) => {
                 name="feedback"
                 id="yes"
                 checked={feedback}
-                onChange={(e) => {
-                  if (e.target.value === "yes") dispatch(setFeedback(true));
-                }}
+                onChange={() => dispatch(setFeedback(true))}
                 value="yes"
               />
             </div>
@@ -62,9 +60,7 @@ const InfoBox = (props) => {
                 value="no"
                 id="no"
                 checked={!feedback}
-                onChange={(e) => {
-                  if (e.target.value === "no") dispatch(setFeedback(false));
-                }}
+                onChange={() =>dispatch(setFeedback(false))}
               />
             </div>
           </div>
