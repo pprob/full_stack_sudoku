@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import "../styles/Banner.css";
 
-const Banner = (props) => {
+const Header = (props) => {
   const { loggedIn } = props;
   return (
     <header>
@@ -16,4 +16,4 @@ const Banner = (props) => {
     </header>
   );
 };
-export default Banner;
+export default Header;

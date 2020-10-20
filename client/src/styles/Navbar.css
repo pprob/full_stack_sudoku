@@ -8,7 +8,9 @@
 }
 .list-item {
   display: inline-block;
-  border: solid 2px gainsboro;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
   border-radius: 5px;
   margin-right: 15px;
   margin-top: 5px;
@@ -17,15 +19,29 @@
 
 .nav-link {
   text-decoration: none;
-  color: black;
-  font-size: 18px;
+  color: #ffffff;
   font-weight: bold;
-
+  position: relative;
+}
+.nav-link:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.nav-link:hover:before {
+  visibility: visible;
+  width: 100%;
 }
 
 .selected {
   font-weight: 800;
-  color: #e85A4F;
+  color: #bf9949;
 }
 
 @media screen and (max-width: 600px) {

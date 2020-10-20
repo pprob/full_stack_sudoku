@@ -4,6 +4,7 @@
   flex-direction: column;
   width: 400px;
   height: 600px;
+  color: black;
 }
 .image-container {
   position: relative;

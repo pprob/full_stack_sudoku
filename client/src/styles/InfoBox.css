@@ -2,24 +2,23 @@
   flex: 1;
 }
 .info-item {
+  text-align: center;
   margin: 15px 1px;
 }
 .drop-down {
-  border: solid 1px #8E8D9B;
   position: relative;
   display: inline;
 }
 .drop-down-selection {
-  width: 150px;
+  width: 50px;
+  padding: 5px;
   left: 0px;
-  padding: 0px;
-  background-color: #EAe7dc;
-  color: #E85A4F;
+  background-color: #bf9949;
+  color: #ffffff;
   border: none;
   text-align: center;
 }
 .drop-down-selection:hover {
-  background-color: #bbb9b0;
 }
 
 .drop-down-content {
@@ -30,7 +29,8 @@
 }
 .drop-down-content button {
   display: block;
-  width: 150px;
+  width: 50px;
+  padding: 5px;
 }
 
 .option {
@@ -45,13 +45,14 @@
 .toggle {
   display: inline;
   position: relative;
+  color: #ffffff;
 }
 .drop-down:hover .drop-down-content {
   display: block;
 }
-.label {
+.info-label {
   margin-right: 10px;
-  color: #8e8d8a;
+  color: #ffffff;
   font-weight: 700;
 }
 

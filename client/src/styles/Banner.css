@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
 .header-title{
-    color: #E85A4F;
+    color: #ffffff;
+    font-family: Tangerine, cursive;
     font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 0;
 }
 
 .header-subtitle{
-    color:#8E8D8A;
+    color:#bf9949;
+    margin-top: 20px;
     margin-bottom: 30px;
+    font-size: 30px;
+    font-family: Tangerine, cursive;
 }
 
 .header__container {

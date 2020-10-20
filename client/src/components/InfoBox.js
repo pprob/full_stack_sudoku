@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setDifficulty, setFeedback } from "../redux/actions/infoActions";
@@ -13,9 +13,9 @@ const InfoBox = (props) => {
   return (
     <div className="info-box">
       <div className="app-container">
-        <div>
+        <Fragment>
           <div className="info-item">
-            <label className="label">Select your difficulty level:</label>
+            <label className="info-label">Select your difficulty level:</label>
             <div className="drop-down">
               <button className="drop-down-selection">{difficulty}</button>
               <div className="drop-down-content">
@@ -37,7 +37,7 @@ const InfoBox = (props) => {
             </div>
           </div>
           <div className="info-item">
-            <label className="label">
+            <label className="info-label">
               Would you like real-time feedback as you play?
             </label>
             <div className="toggle">Yes
@@ -64,7 +64,7 @@ const InfoBox = (props) => {
               />
             </div>
           </div>
-        </div>
+        </Fragment>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@
 
 .square-cell {
     padding: 0;
-    border: solid 1px #c0c3c7;
+    border: solid 1px #bf9949;
 }
 
 .inPlay {
@@ -22,16 +22,16 @@
 }
 
 .grid-border-left {
-    border-left: solid 2px black; 
+    border-left: solid 2px #bf9949; 
 }
 .grid-border-right {
-    border-right: solid 2px black;
+    border-right: solid 2px #bf9949;
 }
 .grid-border-top {
-    border-top: solid 2px black;
+    border-top: solid 2px #bf9949;
 }
 .grid-border-bottom {
-    border-bottom: solid 2px black;
+    border-bottom: solid 2px #bf9949;
 }
 
 @media screen and (max-width: 600px) {
