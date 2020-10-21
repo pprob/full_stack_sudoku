@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setDifficulty, setFeedback } from "../redux/actions/infoActions";
@@ -9,7 +9,16 @@ import "../styles/InfoBox.css";
 const InfoBox = (props) => {
   const { difficulty, feedback, dispatch } = props;
   const difficultyLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
+
+  const handleRadioToggle = (value) => {
+    if (value) {
+      dispatch(setFeedback(true));
+    } else if (!value) {
+      dispatch(setFeedback(false));
+    }
+    return true;
+  };
+
   return (
     <div className="info-box">
       <div className="app-container">
@@ -40,30 +49,27 @@ const InfoBox = (props) => {
             <label className="info-label">
               Would you like real-time feedback as you play?
             </label>
-            <div className="toggle">Yes
-              <input
-                className='radio-button'
-                type="radio"
-                name="feedback"
-                id="yes"
-                checked={feedback}
-                onChange={() => dispatch(setFeedback(true))}
-                value="yes"
-              />
+              <div className="radio-toggle__container">
+                <input
+                  type="radio"
+                  value={true}
+                  onClick={(e) => console.log(e)}
+                />
+                <label
+                  className={feedback ? "radio-selected" : null}
+                  onClick={() => handleRadioToggle(true)}
+                >
+                  Yes
+                </label>
+                <input type="radio" value={false} />
+                <label
+                  className={!feedback ? "radio-selected" : null}
+                  onClick={() => handleRadioToggle(false)}
+                >
+                  No
+                </label>
+              </div>
             </div>
-            <div className="toggle">
-              No
-              <input
-                className='radio-button'
-                type="radio"
-                name="feedback"
-                value="no"
-                id="no"
-                checked={!feedback}
-                onChange={() =>dispatch(setFeedback(false))}
-              />
-            </div>
-          </div>
         </Fragment>
       </div>
     </div>
