@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import Loader from '../components/Loader'
+import Loader from "../components/Loader";
 import {
   setEmailField,
   setUsernameField,
@@ -8,37 +8,53 @@ import {
   setErrorField,
   removeErrorField,
   Loading,
-  hasLoaded
+  hasLoaded,
+  setPasswordErrorField,
+  setEmailErrorField,
 } from "../redux/actions/signupActions";
 import "../styles/Signup.css";
 import axios from "axios";
-import validator from 'validator';
+import validator from "validator";
+import labels from "../data/labels";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLock } from "@fortawesome/free-solid-svg-icons"
 
 //state for email/username/password
 
 const Signup = (props) => {
   const { signupState, dispatch } = props;
-  const { error, email, password, username, isLoading } = signupState;
+  const {
+    error,
+    email,
+    password,
+    username,
+    isLoading,
+    errorFields: { emailError, passwordError },
+  } = signupState;
 
   const setEmail = (e) => {
-    dispatch(setEmailField(e.target.value));
+    const value = e.currentTarget.value.trim();
+    console.log(validator.isEmail(value));
+    if (!validator.isEmail(value)) {
+      dispatch(setEmailErrorField(labels.emailErrorField));
+    } else {
+      dispatch(setEmailErrorField(""));
+    }
+    return dispatch(setEmailField(value));
   };
+
   const setUsername = (e) => {
     dispatch(setUsernameField(e.target.value));
   };
   const setPassword = (e) => {
+    const value = e.currentTarget.value.trim();
+    if (value.toLowerCase().includes("password")) {
+      dispatch(setPasswordErrorField(labels.passwordContainsError));
+    }
     dispatch(setPasswordField(e.target.value));
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validator.isEmail(email)) {
-      return dispatch(setErrorField('Please use a valid email address'))
-    } else if (password.length < 6) {
-      return dispatch(setErrorField('Please use a password longer than 6 characters'))
-    } else if (password.toLowerCase().includes('password')) {
-      return dispatch(setErrorField('Your password cannot contain the "password"'))
-    }
 
     const requestField = {
       email: email,
@@ -47,24 +63,33 @@ const Signup = (props) => {
     };
 
     try {
-      dispatch(Loading())
-      const response = await axios.post('/api/users/register', requestField)
+      dispatch(Loading());
+      const response = await axios.post("/api/users/register", requestField);
       if (response.data.success) {
-        dispatch(hasLoaded())
-        dispatch(removeErrorField())
-        alert('Successfully registered! Taking you to the login page')
-        props.history.push('/login')
+        dispatch(hasLoaded());
+        dispatch(removeErrorField());
+        alert("Successfully registered! Taking you to the login page");
+        return props.history.push("/login");
       }
     } catch (e) {
-      dispatch(hasLoaded())
-      const { data } = e.response
-      if(data.error.includes('email')) {
-
-        dispatch(setErrorField('This email is already in use or not valid, please use a different email'))
-      } else if(data.error.includes('username')) {
-        dispatch(setErrorField('This username has already been taken. Please choose a different username'))
+      dispatch(hasLoaded());
+      const { data } = e.response;
+      if (data.error.includes("email")) {
+        dispatch(
+          setErrorField(
+            "This email is already in use or not valid, please use a different email"
+          )
+        );
+      } else if (data.error.includes("username")) {
+        dispatch(
+          setErrorField(
+            "This username has already been taken. Please choose a different username"
+          )
+        );
       } else {
-        dispatch(setErrorField('Error registering. Please try again.'))
+        dispatch(
+          setErrorField("Error registering. Make sure all fields are correct.")
+        );
       }
     }
   };
@@ -72,53 +97,54 @@ const Signup = (props) => {
   return (
     <div className="app-body">
       <div className="app-container">
-        <div className="header">
-          <h1 className="signup-header">Welcome - It's good to see you!</h1>
-          <h2 className="signup-subtitle">Let's get you registered!</h2>
-          <h3 className="signup-subtitle-second">
-            this way we can track your wins, best times and more!
-          </h3>
-        </div>
-        <div className="form-container">
-          <form onSubmit={onSubmit}>
-            <label className="label">Email address</label>
+        <div className="signup-container">
+          <div className="header">
+            <h1 className="signup-header">Welcome, create a free account</h1>
+            <h2 className="signup-subtitle">Track your scores and more</h2>
+          </div>
+          <div className="signup-form">
+            <label className="signup-label">Email address</label>
             <input
-              className="field"
-              placeholder="e.g abc@hotmail.com"
+              className="signup-field"
               value={signupState.email}
               onChange={setEmail}
-            ></input>
-            <label className="label">Username</label>
+            />
+            {emailError && <div className="error-field">{emailError}</div>}
+            <label className="signup-label">Username</label>
             <input
-              className="field"
-              placeholder="Choose your user id. e.g sudokumeister1337"
+              className="signup-field"
               value={signupState.username}
               onChange={setUsername}
-            ></input>
-            <label className="label">Password</label>
+            />
+            <label className="signup-label">Password</label>
             <input
               type="password"
-              className="field"
-              placeholder="Must be minimum 8 characters length"
+              className="signup-field"
               value={signupState.password}
               onChange={setPassword}
-            ></input>
+            />
+            {passwordError && (
+              <div className="error-field">{passwordError}</div>
+            )}
             {error && (
               <div className="error-container">
                 <label>{error}</label>
               </div>
             )}
             <div className="submit-button-container">
-              <button type="submit" className="submit-button">
-                Sign up!
+              <button
+                type="submit"
+                className="submit-button-signup"
+                onClick={onSubmit}
+              >
+                <span><FontAwesomeIcon icon={faLock}/><span className='signup-button-text'>Create account!</span></span>
               </button>
             </div>
-          </form>
+          </div>
+          {isLoading && <Loader />}
         </div>
-        {isLoading && <Loader />}
       </div>
     </div>
-    
   );
 };
 

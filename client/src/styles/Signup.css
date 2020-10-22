@@ -1,45 +1,50 @@
+.signup-container {
+  width: 380px;
+  padding: 30px;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border: 2px solid #bf9949;
+  box-sizing: border-box;
+}
+
 .header {
   text-align: center;
-  margin-top: 50px;
   width: 100%;
+  margin-bottom: 20px;
+  box-sizing: inherit;
 }
 .signup-header {
-  color: #E85A4F;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: black;
 }
 .signup-subtitle {
-  color: #8E8D8A;
-
+  margin: 0;
+  color: #bf9949;
+  font-size: 14px;
 }
 .signup-subtitle-second {
  color: #bbbbb9;
  font-weight: 800;
 }
+.signup-form {
+  box-sizing: inherit;
+}
 
-.field {
+.signup-field {
   display: block;
-  width: 100%;
+  width: 320px;
+  height: 34px;
   margin: 10px 0px;
-  border-radius: 5px;
-  padding: 7.5px 5px;
+  border-radius: 2px;
   border: solid 1px;
-  background-color: #EAE7DC;
-  font-weight: bold;
   outline: none;
-  border-color: #bbbbb9;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  box-sizing: inherit;
 }
-.field:focus {
-  border-color: #E85A4F;
-}
-
-.form-container {
-  border-radius: 10px;
-  border: 1px solid #E85A4F;
-  padding: 20px;
-  width: 100%;
-  margin: 0 auto;
-}
-.form-container form {
-  
+.signup-field:focus {
+  border: 1px solid #bf9949;
 }
 
 .submit-button-container {
@@ -47,33 +52,42 @@
   text-align: center;
 }
 .error-container {
+  margin-top: 30px;
   text-align: center;
-  color: #E85A4F;
+  color: red;
 }
-.submit-button {
+.submit-button-signup {
+  width: 100%;
   padding: 5px;
   cursor: pointer;
   border-radius: 5px;
-  color: #E85A4F;
-  background-color: #bbbbb9;
+  color: #ffffff;
+  background-color: #bf9949;
+  height: 40px;
+  border: none;
 }
 
-.label {
-  font-weight: 700;
+.signup-label {
   color: black;
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
 }
-@media screen and (max-width: 600px) {
-  .form-container {
-    width: 350px;
+.error-field {
+  color: red;
+  font-size: 12px;
+}
+
+.signup-button-text {
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .signup-container {
+    width: 300px;
     margin-bottom: 10px;
   }
-  .signup-header {
-    font-size: 24px;
-  }
-  .signup-subtitle {
-    font-size: 20px;
-  }
-  .signup-subtitle-second {
-    font-size: 16px;
+  .signup-field {
+    width: 240px;
   }
 }
