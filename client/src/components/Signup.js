@@ -34,7 +34,7 @@ const Signup = (props) => {
 
   const setEmail = (e) => {
     const value = e.currentTarget.value.trim();
-    console.log(validator.isEmail(value));
+
     if (!validator.isEmail(value)) {
       dispatch(setEmailErrorField(labels.emailErrorField));
     } else {
@@ -44,14 +44,16 @@ const Signup = (props) => {
   };
 
   const setUsername = (e) => {
-    dispatch(setUsernameField(e.target.value));
+    const value = e.currentTarget.value.trim();
+
+    dispatch(setUsernameField(value));
   };
   const setPassword = (e) => {
     const value = e.currentTarget.value.trim();
     if (value.toLowerCase().includes("password")) {
       dispatch(setPasswordErrorField(labels.passwordContainsError));
     }
-    dispatch(setPasswordField(e.target.value));
+    dispatch(setPasswordField(value));
   };
   const onSubmit = async (e) => {
     e.preventDefault();

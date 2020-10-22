@@ -1,51 +1,88 @@
+.login-container {
+  width: 380px;
+  margin-top: 30px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 2px solid #bf9949;
+}
 .title-container {
-    text-align: center;
+  text-align: center;
+  box-sizing: inherit;
+  margin-bottom: 20px;
 }
 
 .login-header {
-    color: #E85A4F;
+  color: black;
+  font-size: 24px;
 }
 .login-subheader {
-    color: #8E8D8A;
+  color: #bf9949;
+  font-size: 14px;
 }
 
-.display-signup {
-    text-align: center;
+.login-display-signup {
+  text-align: center;
+  box-sizing: inherit;
+  margin-bottom: 0;
+  color: black;
 }
 
-.field {
-    display: block;
-    width: 100%;
-    margin: 10px 0px;
-    border-radius: 5px;
-    padding: 7.5px 5px;
-    border: solid 1px;
-    background-color: #EAE7DC;
-    font-weight: bold;
-    outline: none;
-    border-color: #bbbbb9;
+.login-form {
+  box-sizing: inherit;
+}
+
+.login-label {
+  color: black;
+  font-size: 14px;
+}
+
+.login-field {
+  display: block;
+  width: 320px;
+  height: 34px;
+  margin: 10px 0px;
+  outline: none;
+  border: solid 1px;
+  padding: 0 0 0 10px;
+  box-sizing: inherit;
+  font-family: open-sans, sans-serif
+}
+.login-field:focus {
+    border: 1px solid #bf9949;
+}
+
+.login-button-label {
+  padding-left: 10px;
+  font-family: open-sans, sans-serif;
 }
 
 .error_container {
-    text-align: center;
-    color: #E85A4F;
+  text-align: center;
+  color: red;
 }
 
-.submit-button {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #E85A4F;
-    background-color: #bbbbb9;
+.login-submit-button {
+  width: 320px;
+  height: 40px;
+  margin: 10px 0 10px 0;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #bf9949;
+  border: none;
+  outline: none;
 }
 
 @media screen and (max-width: 600px) {
-    .login-header {
-        font-size: 24px;
-    }
-    .login-subheader {
-        font-size: 20px;
-    }
+  .login-header {
+    font-size: 24px;
+  }
+  .login-subheader {
+    font-size: 20px;
+  }
+  .login-submit-button {
+    width: 240px;
+  }
 }
