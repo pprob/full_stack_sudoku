@@ -2,6 +2,10 @@ const defaultState = {
   email: '',
   username: '',
   password: '',
+  errorFields: {
+    emailError: '',
+    passwordError: ''
+  },
   error: undefined,
   isLoading: false
 }
@@ -13,6 +17,25 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         email: action.email
+      }
+    case 'SET_EMAIL_ERROR_FIELD':
+      const emailErrorField = {
+        ...state.errorFields,
+        emailError: action.payload
+      }
+
+      return {
+        ...state,
+        errorFields: emailErrorField
+      }
+    case 'SET_PASSWORD_ERROR_FIELD':
+      const passwordErrorField = {
+        ...state.errorFields,
+        passwordError: action.payload
+      }
+      return {
+        ...state,
+        errorFields: passwordErrorField
       }
     case 'SET_USERNAME':
       return {

@@ -28,6 +28,20 @@ export const setErrorField = (payload) => {
   }
 }
 
+export const setPasswordErrorField = (payload) => {
+  return {
+    type: 'SET_PASSWORD_ERROR_FIELD',
+    payload
+  }
+}
+
+export const setEmailErrorField = (payload) => {
+  return {
+    type: 'SET_EMAIL_ERROR_FIELD',
+    payload
+  }
+}
+
 export const removeErrorField = () => {
   return {
     type: 'REMOVE_ERROR_FIELD',
