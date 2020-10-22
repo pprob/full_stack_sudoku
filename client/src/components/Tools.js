@@ -14,8 +14,8 @@ const Tools = props => {
   }
 
   const displaySolution = (e) => {
-    customAlert.show('Using the solver invalidates your chance of a clean victory!')
     if (boardState.inPlay) {
+      customAlert.show('Using the solver invalidates your chance of a clean victory!')
       dispatch(showSolution())
     } else {
       customAlert.error('Please start a new game first')
