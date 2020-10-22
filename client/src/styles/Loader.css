@@ -10,11 +10,11 @@
   right: 0;
   bottom: 300px;
   left: 0;
-  border: 14px solid #EAE7DC;
+  border: 14px solid #ffffff;
   border-radius: 50%;
   height: 120px;
   width: 120px;
-  border-top: 14px solid #E85A4F;
+  border-top: 14px solid #bf9949;
   animation: loader 2s linear infinite;
 }
 
