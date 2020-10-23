@@ -1,7 +1,7 @@
 import React from 'react';
 
 const headerStyles = {
-    color: '#E85A4F',
+    color: '#bf9949',
 }
 
 export default {
