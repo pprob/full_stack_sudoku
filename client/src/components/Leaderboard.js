@@ -41,7 +41,7 @@ const Leaderboard = (props) => {
 
   useEffect(() => {
     fetchLeaderboard();
-  }, []);
+  });
   
   return (
     <div className="app-body">
