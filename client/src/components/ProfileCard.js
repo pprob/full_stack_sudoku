@@ -1,6 +1,14 @@
 import React from "react";
 import axios from "axios";
+import Loader from "./Loader";
+import image1 from '../assets/profile-cover/sudoku-1.jpg'
+import image2 from '../assets/profile-cover/sudoku-2.jpg'
+import image3 from '../assets/profile-cover/sudoku-3.jpg'
+import image4 from '../assets/profile-cover/sudoku-4.jpg'
+import placeHolderProfileImage from "../assets/placeHolders/placeholder-profile.jpg"
 import "../styles/ProfileCard.css";
+
+const images = [image1, image2, image3, image4];
 
 class ProfileCard extends React.Component {
   state = {
@@ -13,10 +21,20 @@ class ProfileCard extends React.Component {
     avatarURL: undefined,
     scoreCard: undefined
   };
+  selectRandomImage = () => {
+    const randomImageIndex = Math.floor(Math.random() * 4);
+    console.log(randomImageIndex)
+    return images[randomImageIndex]
+  }
   setAvatarState = (e) => {
-    this.setState({
-      avatarFile: e.target.files[0]
-    })
+    if(e.target.files[0]) {
+      this.setState({
+        avatarFile: e.target.files[0]
+      })
+    } else {
+      return false;
+    }
+    
   };
   handleAvatarUpload = async () => {
     const formData = new FormData()
@@ -28,6 +46,7 @@ class ProfileCard extends React.Component {
           avatarFile: undefined,
           error: undefined
         })
+        return window.location.reload();
       }
     } catch (e) {
       this.setState({
@@ -75,16 +94,19 @@ class ProfileCard extends React.Component {
     }
   };
   renderLoader = () => {
-    return <div>FETCHING YOUR PROFILE NOW</div>;
+    return <Loader />;
   };
   renderProfile = () => {
+    const image = this.selectRandomImage();
     return (
       <div className="profile-card">
-        <div className="top-card"></div>
+        <div className="profile-top-card">
+          <img src={image} alt=""></img>
+        </div>
         <div className="image-container">
           <div className="image-upload">
             <label htmlFor="file-input">
-              <img src={this.state.avatarURL} />
+              <img src={this.state.avatarURL || placeHolderProfileImage} alt=""/>
             </label>
             <input
               type="file"
@@ -98,15 +120,15 @@ class ProfileCard extends React.Component {
           <h1>{this.state.username}</h1>
           <h2>{this.state.email}</h2>
           <h3>{this.state.description}</h3>
+          {this.state.error && (
+          <div>{this.state.error}</div>
+        )}
         </div>
         <div className="contact-details">
           <div>test</div>
           <div>test</div>
           <div>test</div>
         </div>
-        {this.state.error && (
-          <div>{this.state.error}</div>
-        )}
       </div>
     );
   };
