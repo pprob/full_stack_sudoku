@@ -84,6 +84,22 @@
   font-family: open-sans, sans-serif;
 }
 
+.redirect-login-page:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis steps(4, end) 900ms infinite;
+  content: "\2026";
+  width: 0;
+  position: absolute;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 25px;
+  }
+}
+
 @media screen and (max-width: 720px) {
   .signup-container {
     width: 300px;

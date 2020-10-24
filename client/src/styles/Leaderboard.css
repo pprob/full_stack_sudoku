@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
 }
 
 .leaderboard__container .header__container {
@@ -10,11 +11,12 @@
   margin: 30px 10px;
 }
 .leaderboard-header {
-  color: #E85A4F;
+  color: #ffffff;
 }
 
 .leaderboard-subtitle {
-  color: #8E8D8A;
+  color: #bf9949;
+  font-size: 16px;
 }
 
 .loader-placement .loader__container{
@@ -39,13 +41,13 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #bf9949;
   border-radius: 10px;
   margin: 0px 5px;
 }
 .search-title {
   flex-grow: 2;
-  color: #E85A4F;
+  color: #ffffff;
 }
 .search-bar {
   flex-grow: 1;
@@ -56,6 +58,7 @@
   width: 100%;
   border: solid 1px black;
   border-radius: 5px;
+  outline: none;
 }
 
 .leaderboard-table thead tr th {
@@ -66,8 +69,9 @@
   padding: 15px;
 }
 .leaderboard-table tbody tr {
-  border-bottom: 5px solid #EAE7DC;
-  background-color: #d3d0c6;
+  border-top: 2px solid #d3d0c6;
+  border-bottom: 2px solid #d3d0c6;
+  background-color: #1b1b1b;
 }
 .leaderboard-table tbody tr:hover {
   background-color: #bbb9b0;
@@ -75,7 +79,7 @@
 
 .leaderboard-table tbody tr:nth-of-type(1){
   font-weight: bold;
-  color: #E85A4F;
+  color: #bf9949;
 }
 
 .leaderboard-table tbody tr td:nth-of-type(3) {
