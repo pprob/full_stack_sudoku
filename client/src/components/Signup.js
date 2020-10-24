@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import Loader from "../components/Loader";
+import Modal from "../components/Modal";
 import {
   setEmailField,
   setUsernameField,
@@ -12,17 +13,17 @@ import {
   setPasswordErrorField,
   setEmailErrorField,
 } from "../redux/actions/signupActions";
+import Labels from '../data/labels';
 import "../styles/Signup.css";
 import axios from "axios";
 import validator from "validator";
 import labels from "../data/labels";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLock } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 //state for email/username/password
 
-const Signup = (props) => {
-  const { signupState, dispatch } = props;
+const Signup = ({ signupState, dispatch, history }) => {
   const {
     error,
     email,
@@ -31,6 +32,13 @@ const Signup = (props) => {
     isLoading,
     errorFields: { emailError, passwordError },
   } = signupState;
+
+  const [modalOpen, setModalStatus] = useState(false);
+
+  const setModalOpenOrClose = () => {
+    
+    setModalStatus(!modalOpen);
+  };
 
   const setEmail = (e) => {
     const value = e.currentTarget.value.trim();
@@ -70,8 +78,10 @@ const Signup = (props) => {
       if (response.data.success) {
         dispatch(hasLoaded());
         dispatch(removeErrorField());
-        alert("Successfully registered! Taking you to the login page");
-        return props.history.push("/login");
+        setModalOpenOrClose();
+        setTimeout(() => {
+          return history.push("/login");
+        }, 2000)
       }
     } catch (e) {
       dispatch(hasLoaded());
@@ -97,56 +107,62 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="app-body">
-      <div className="app-container">
-        <div className="signup-container">
-          <div className="header">
-            <h1 className="signup-header">Welcome, create a free account</h1>
-            <h2 className="signup-subtitle">Track your scores and more</h2>
-          </div>
-          <div className="signup-form">
-            <label className="signup-label">Email address</label>
-            <input
-              className="signup-field"
-              value={signupState.email}
-              onChange={setEmail}
-            />
-            {emailError && <div className="error-field">{emailError}</div>}
-            <label className="signup-label">Username</label>
-            <input
-              className="signup-field"
-              value={signupState.username}
-              onChange={setUsername}
-            />
-            <label className="signup-label">Password</label>
-            <input
-              type="password"
-              className="signup-field"
-              value={signupState.password}
-              onChange={setPassword}
-            />
-            {passwordError && (
-              <div className="error-field">{passwordError}</div>
-            )}
-            {error && (
-              <div className="error-container">
-                <label>{error}</label>
-              </div>
-            )}
-            <div className="submit-button-container">
-              <button
-                type="submit"
-                className="submit-button-signup"
-                onClick={onSubmit}
-              >
-                <span><FontAwesomeIcon icon={faLock}/><span className='signup-button-text'>Create account!</span></span>
-              </button>
+    <Fragment>
+      {modalOpen && <Modal><div className="redirect-login-page">{Labels.TakeToLoginPage}</div></Modal>}
+      <div className="app-body">
+        <div className="app-container">
+          <div className="signup-container">
+            <div className="header">
+              <h1 className="signup-header">Welcome, create a free account</h1>
+              <h2 className="signup-subtitle">Track your scores and more</h2>
             </div>
+            <div className="signup-form">
+              <label className="signup-label">Email address</label>
+              <input
+                className="signup-field"
+                value={signupState.email}
+                onChange={setEmail}
+              />
+              {emailError && <div className="error-field">{emailError}</div>}
+              <label className="signup-label">Username</label>
+              <input
+                className="signup-field"
+                value={signupState.username}
+                onChange={setUsername}
+              />
+              <label className="signup-label">Password</label>
+              <input
+                type="password"
+                className="signup-field"
+                value={signupState.password}
+                onChange={setPassword}
+              />
+              {passwordError && (
+                <div className="error-field">{passwordError}</div>
+              )}
+              {error && (
+                <div className="error-container">
+                  <label>{error}</label>
+                </div>
+              )}
+              <div className="submit-button-container">
+                <button
+                  type="submit"
+                  className="submit-button-signup"
+                  onClick={onSubmit}
+                >
+                  <span>
+                    <FontAwesomeIcon icon={faLock} />
+                    <span className="signup-button-text">Create account!</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            {isLoading && <Loader />}
           </div>
-          {isLoading && <Loader />}
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
