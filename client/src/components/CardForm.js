@@ -67,13 +67,13 @@ const CardForm = (props) => {
     } else {
       return (
         <Modal
-        title="Payment failure!"
-        description="Your payment was unsuccessful. Please try again."
-        onButtonOneClick={setModalStatus}
-        onCloseAction={setModalStatus}
-        buttonOneLabel="Close"
-      />
-      )
+          title="Payment failure!"
+          description="Your payment was unsuccessful. Please try again."
+          onButtonOneClick={setModalStatus}
+          onCloseAction={setModalStatus}
+          buttonOneLabel="Close"
+        />
+      );
     }
   };
 
@@ -82,17 +82,17 @@ const CardForm = (props) => {
       {modalOpen && renderModal(paymentOutcomeSuccessful)}
       <div className="app-body">
         <div className="app-container">
-      <form className="checkout__form__container" onSubmit={onSubmit}>
-        <CardSection />
-        <button
-          type="submit"
-          className="submit-button-stripe"
-          disabled={!stripe}
-        >
-          Donate $5!
-        </button>
-      </form>
-      </div>
+          <form className="checkout__form__container" onSubmit={onSubmit}>
+            <CardSection />
+            <button
+              type="submit"
+              className="submit-button-stripe"
+              disabled={!stripe}
+            >
+              Donate $5!
+            </button>
+          </form>
+        </div>
       </div>
     </Fragment>
   );
