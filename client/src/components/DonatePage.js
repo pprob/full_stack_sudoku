@@ -1,13 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CardForm from "./CardForm";
 
 const DonatePage = (props) => {
   return (
-    <div className="app-body">
-      <div className="app-container">
+    <Fragment>
         <CardForm />
-      </div>
-    </div>
+    </Fragment>
   );
 };
 export default DonatePage;

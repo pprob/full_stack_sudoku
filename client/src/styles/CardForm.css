@@ -4,16 +4,21 @@
 }
 
 .submit-button-stripe {
+  background-color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  color: #bf9949;
+  border: none;
+  padding: 5px 10px;
   margin-top: 20px;
-  border: 1px solid #8E8D8A;
-  outline: none;
-  border-radius: 5px;
+  margin-right: 5px;
+  width: 150px;
   height: 50px;
-  font-size: 20px;
-  color: #E85A4F;
-  background-color: #EAE7DC;
+  outline: none;
+  border-radius: 4px;
 }
 
 .submit-button-stripe:hover {
-  background-color: #bbb9b0;
+  background-color: #bf9949;
+  color: #ffffff;
 }

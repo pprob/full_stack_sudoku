@@ -2,12 +2,10 @@
   box-sizing: border-box;
   height: 50px;
   padding: 10px 12px;
-
   border: 1px solid transparent;
-
   border-radius: 10px;
   background-color: white;
-  box-shadow: 0 3px 100px 0 #e6ebf1;
+  box-shadow: 0 3px 30px 0 #e6ebf1;
   transition: box-shadow 150ms ease;
   margin: 20px 0px;
 }
@@ -27,4 +25,5 @@
   display: inline-block;
   font-size: 20px;
   margin-top: 100px;
+  margin-bottom: 30px;
 }

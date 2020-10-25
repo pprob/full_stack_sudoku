@@ -108,7 +108,7 @@ const Signup = ({ signupState, dispatch, history }) => {
 
   return (
     <Fragment>
-      {modalOpen && <Modal><div className="redirect-login-page">{Labels.TakeToLoginPage}</div></Modal>}
+      {modalOpen && <Modal title="Sucess!"><div className="redirect-login-page">{Labels.TakeToLoginPage}</div></Modal>}
       <div className="app-body">
         <div className="app-container">
           <div className="signup-container">

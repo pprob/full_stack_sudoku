@@ -20,13 +20,13 @@ const Modal = ({
     );
   };
   return (
-    <div className="modal-container">
+    <div className="modal-container" onClick={onCloseAction}>
       <div className="modal-content">
         <div className="modal-header-container">
-          <h1 className="modal-title">Success!</h1>
+  <h1 className="modal-title">{title}</h1>
         </div>
         <hr style={{ width: "80%" }} />
-        <div className="modal-main-content">{children}</div>
+        <div className="modal-main-content">{children || description}</div>
         {onButtonOneClick || onButtonTwoClick ? renderButtonContainer() : null}
       </div>
     </div>
