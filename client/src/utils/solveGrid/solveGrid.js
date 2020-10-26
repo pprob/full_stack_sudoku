@@ -6,7 +6,7 @@ import isInSquare from '../isInSquare/isInSquare'
 import checkGrid from '../checkGrid/checkGrid'
 
 
-function solveGrid(grid) {
+const solveGrid = (grid) => {
 
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   let row = 0
@@ -15,7 +15,6 @@ function solveGrid(grid) {
   for (let i = 0; i < 81; i++) {
     row = Math.floor(i / 9)
     col = i % 9
-
     if (grid[row][col] === 0) {
       for (let number of numbers) {
         if (!isInRow({ grid, row, number})) {
@@ -26,8 +25,9 @@ function solveGrid(grid) {
               if (checkGrid(grid)) {
                 global.counter++
                 break
+              } else if (solveGrid(grid)) {
+                return true
               }
-              else if (solveGrid(grid)) return true
             }
           }
         }

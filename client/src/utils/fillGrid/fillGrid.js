@@ -6,7 +6,7 @@ import isInSquare from "../isInSquare/isInSquare";
 import checkGrid from "../checkGrid/checkGrid";
 
 
-function fillGrid(grid) {
+const fillGrid = (grid) => {
   var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   let row = 0
   let col = 0
@@ -25,8 +25,11 @@ function fillGrid(grid) {
             const square = identifyWorkingSquare({ grid, row, col })
             if (!isInSquare({ square, number })) {
               grid[row][col] = number
-              if (checkGrid(grid)) return true 
-              else if (fillGrid(grid)) return true
+              if (checkGrid(grid)) {
+                return true
+              } else if (fillGrid(grid)) {
+                return true
+              }
             }
           }
         }

@@ -1,5 +1,5 @@
 
-function copyGrid (grid) {
+const copyGrid = (grid) => {
   const gridCopy = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],

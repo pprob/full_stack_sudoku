@@ -1,6 +1,6 @@
 import fillGrid from '../fillGrid/fillGrid'
 
-function createFullGrid() {
+const createFullGrid = () => {
   const grid = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],

@@ -4,7 +4,7 @@ import copyGrid from '../copyGrid/copyGrid'
 import solveGrid from '../solveGrid/solveGrid'
 
 
-function removeNumbers(grid, attempts = 5) {
+const removeNumbers = (grid, attempts = 5) => {
   while (attempts > 0) {
     let row = getRandomIndex()
     let col = getRandomIndex()

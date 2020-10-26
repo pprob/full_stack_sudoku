@@ -1,7 +1,5 @@
+const getRandomIndex = () => {
+  return Math.floor(Math.random() * 9)
+}
 
-
-  function getRandomIndex()  {
-    return Math.floor(Math.random() * 9)
-  }
-
-  export default getRandomIndex
+export default getRandomIndex
