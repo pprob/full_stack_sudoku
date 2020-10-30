@@ -108,7 +108,7 @@ router.post("/login", async (req, res) => {
     }
     await user.comparePassword(req.body.password);
     const token = await user.generateToken();
-    res.status(200).cookie("access_token", token).json({
+    res.status(200).cookie("access_token", token, { httpOnly: true }).json({
       loginSuccess: true,
     });
   } catch (e) {
