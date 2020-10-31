@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 import Loader from "./Loader";
-import image1 from '../assets/profile-cover/sudoku-1.jpg'
-import image2 from '../assets/profile-cover/sudoku-2.jpg'
-import image3 from '../assets/profile-cover/sudoku-3.jpg'
-import image4 from '../assets/profile-cover/sudoku-4.jpg'
-import placeHolderProfileImage from "../assets/placeHolders/placeholder-profile.jpg"
+import image1 from "../assets/profile-cover/sudoku-1.jpg";
+import image2 from "../assets/profile-cover/sudoku-2.jpg";
+import image3 from "../assets/profile-cover/sudoku-3.jpg";
+import image4 from "../assets/profile-cover/sudoku-4.jpg";
+import placeHolderProfileImage from "../assets/placeHolders/placeholder-profile.jpg";
 import "../styles/ProfileCard.css";
 
 const images = [image1, image2, image3, image4];
@@ -19,57 +19,56 @@ class ProfileCard extends React.Component {
     description: undefined,
     avatarFile: undefined,
     avatarURL: undefined,
-    scoreCard: undefined
+    scoreCard: undefined,
   };
   selectRandomImage = () => {
     const randomImageIndex = Math.floor(Math.random() * 4);
-    console.log(randomImageIndex)
-    return images[randomImageIndex]
-  }
+    return images[randomImageIndex];
+  };
   setAvatarState = (e) => {
-    if(e.target.files[0]) {
+    if (e.target.files[0]) {
       this.setState({
-        avatarFile: e.target.files[0]
-      })
+        avatarFile: e.target.files[0],
+      });
     } else {
       return false;
     }
-    
   };
   handleAvatarUpload = async () => {
-    const formData = new FormData()
-    formData.append('avatar', this.state.avatarFile)
+    const formData = new FormData();
+    formData.append("avatar", this.state.avatarFile);
     try {
-      const response = await axios.post('/api/users/me/avatar', formData)
-      if(response.data.success) {
+      const response = await axios.post("/api/users/me/avatar", formData);
+      if (response.data.success) {
         this.setState({
           avatarFile: undefined,
-          error: undefined
-        })
+          error: undefined,
+        });
         return window.location.reload();
       }
     } catch (e) {
       this.setState({
         avatarFile: undefined,
-        error: e.response.data.error
-      })
+        error: e.response.data.error,
+      });
     }
-  }
+  };
   componentDidMount = () => {
-    this.fetchProfile()
-  }
+    this.fetchProfile();
+  };
   componentDidUpdate = () => {
     if (this.state.avatarFile) {
-      this.handleAvatarUpload()
-      this.fetchProfile()
+      this.handleAvatarUpload();
+      this.fetchProfile();
     }
-  }
+  };
+  renderPlayerScores = () => {};
 
   fetchProfile = async () => {
     try {
       // dont need to call /me, can call score end point and populate it with user data
       const response = await axios.get("api/scores/my-score");
-      const avatarUrl = `/api/users/me/avatar`
+      const avatarUrl = `/api/users/me/avatar`;
       if (response.data.success) {
         this.setState((state) => {
           return {
@@ -79,7 +78,7 @@ class ProfileCard extends React.Component {
             username: response.data.username,
             avatarFile: undefined,
             avatarURL: avatarUrl,
-            scoreCard: response.data.scoreCard
+            scoreCard: response.data.scoreCard,
           };
         });
       }
@@ -106,7 +105,10 @@ class ProfileCard extends React.Component {
         <div className="image-container">
           <div className="image-upload">
             <label htmlFor="file-input">
-              <img src={this.state.avatarURL || placeHolderProfileImage} alt=""/>
+              <img
+                src={this.state.avatarURL || placeHolderProfileImage}
+                alt=""
+              />
             </label>
             <input
               type="file"
@@ -119,15 +121,23 @@ class ProfileCard extends React.Component {
         <div className="card-content">
           <h1>{this.state.username}</h1>
           <h2>{this.state.email}</h2>
-          <h3>{this.state.description}</h3>
-          {this.state.error && (
-          <div>{this.state.error}</div>
-        )}
+          <h3>Lifetime scores (difficulty - wins)</h3>
+          <div className="card-scores">
+            {this.state.scoreCard &&
+              Object.keys(this.state.scoreCard).map((key) => {
+                const value = this.state.scoreCard[key];
+                console.log(key, value);
+                return (
+                  <p>
+                    <span className="difficulty-level">{key}</span> : <span className="wins">{value}</span>
+                  </p>
+                );
+              })}
+          </div>
         </div>
+        {this.state.error && <div>{this.state.error}</div>}
         <div className="contact-details">
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
+          Sudokuact
         </div>
       </div>
     );

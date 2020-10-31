@@ -21,6 +21,17 @@ const BoardRow = (props) => {
     return cellValues[row][column];
   };
 
+  const handleOnChange = (e, rowIndex, colIndex) => {
+    if (checkValid(e, rowIndex, colIndex)) {
+      const newValue = parseInt(e.target.value);
+      return dispatch(setCellValue(rowIndex, colIndex, newValue));
+    }
+  }
+  const handleDelete = (event, rowIndex, colIndex) => {
+    if (event.key === "Backspace") {
+      return dispatch(setCellValue(rowIndex, colIndex, ''))
+    }
+  }
   const isInPlay = (activeCells, row, column) => {
     const isSameAsActive =
       row === activeCells[0] && column === activeCells[1] ? true : false;
@@ -33,7 +44,11 @@ const BoardRow = (props) => {
       alert("Please start the game");
       return false;
     }
-    const value = parseInt(e.target.value);
+    const stringValue = e.currentTarget.value
+    const value = parseInt(stringValue);
+    if (stringValue === '') {
+      return false
+    }
     if (isNaN(value)) {
       customAlert.error("You must enter a number between 0 and 9");
       return false;
@@ -104,13 +119,9 @@ const BoardRow = (props) => {
               type="text"
               value={cellValue}
               maxLength="1"
-              onClick={(e) => dispatch(setActiveCells(rowIndex, colIndex))}
-              onChange={(e) => {
-                if (checkValid(e, rowIndex, colIndex)) {
-                  const newValue = parseInt(e.target.value);
-                  dispatch(setCellValue(rowIndex, colIndex, newValue));
-                }
-              }}
+              onClick={() => dispatch(setActiveCells(rowIndex, colIndex))}
+              onChange={(e) => handleOnChange(e, rowIndex, colIndex)}
+              onKeyUp={(e) => handleDelete(e, rowIndex, colIndex)}
             />
           </td>
         );

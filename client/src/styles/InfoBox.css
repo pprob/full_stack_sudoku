@@ -17,6 +17,7 @@
   color: #ffffff;
   border: none;
   text-align: center;
+  border-radius: 4px;
 }
 
 .drop-down-content {
@@ -35,10 +36,12 @@
   padding: 3px;
   border: none;
   background-color: #EAe7dc;
-  color: #E85A4F;
+  color: #1b1b1b;
+  border-radius: 1px;
 }
 .option:hover {
-  background-color: #bbb9b0;
+  background-color: #bf9949;
+  color: #ffffff;
 }
 
 .radio-toggle__container {

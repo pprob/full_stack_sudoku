@@ -19,7 +19,7 @@ const Board = props => {
       difficulty: gameDifficulty
     }
     await axios.patch('/api/scores/update-score', update)
-    return
+    return true
   }
 
   const checkGameOver = () => {
@@ -44,7 +44,7 @@ const Board = props => {
         setTimeout(() => {
           customAlert.info('Creating a new game!')
           dispatch(createNewGame(gameDifficulty))
-        }, 2000)
+        }, 5000)
       }
     }
   });
