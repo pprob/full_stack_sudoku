@@ -1,0 +1,40 @@
+.error-layout-container {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sadface-icon {
+  text-align: center;
+  font-size: 150px;
+}
+
+.error-content .error-redirects {
+  text-align: center;
+}
+
+.error-redirects h1 {
+  margin: 0;
+}
+
+.errorpage-button {
+  width: 320px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #bf9949;
+  height: 40px;
+  border: none;
+  outline: none;
+}
+
+.errorpage-button:hover {
+  color: black;
+}
+
+@media screen and (max-width: 720px) {
+  .error-layout-container {
+    margin-top: 0px;
+  }
+}
