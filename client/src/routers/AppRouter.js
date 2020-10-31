@@ -11,6 +11,7 @@ import HelpLayout from '../components/HelpLayout'
 import DonatePage from '../components/DonatePage'
 import Logout from '../components/Logout'
 import Leaderboard from '../components/Leaderboard'
+import Error from '../components/Error';
 import "../styles/App.css";
 
 
@@ -47,6 +48,7 @@ const AppRouter = () => {
           <Route path='/donate' component={DonatePage}/>
           <Route path='/leaderboard' component={Leaderboard} />
           <Route path='/logout' component={Logout} />
+          <Route path='*' component={Error}/>
         </Switch>
         <Footer />
       </div>
