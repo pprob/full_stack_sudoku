@@ -18,10 +18,10 @@ const removeNumbers = (grid, attempts = 5) => {
     
     const gridCopy = copyGrid(grid);
 
-    global.counter = 0
+    global.counter = false
     solveGrid(gridCopy);
 
-    if (global.counter !== 1) {
+    if (!global.counter) {
       grid[row][col] = backup;
       attempts--
     }

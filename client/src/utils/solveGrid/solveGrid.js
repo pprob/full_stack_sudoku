@@ -23,7 +23,7 @@ const solveGrid = (grid) => {
             if (!isInSquare({ square, number })) {
               grid[row][col] = number
               if (checkGrid(grid)) {
-                global.counter++
+                global.counter = true
                 break
               } else if (solveGrid(grid)) {
                 return true
