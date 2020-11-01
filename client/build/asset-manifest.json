@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.5eef4911.chunk.css",
-    "main.js": "/static/js/main.68002f8f.chunk.js",
-    "main.js.map": "/static/js/main.68002f8f.chunk.js.map",
+    "main.css": "/static/css/main.60d180da.chunk.css",
+    "main.js": "/static/js/main.fed96ab2.chunk.js",
+    "main.js.map": "/static/js/main.fed96ab2.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.83c3e0c4.js",
     "runtime-main.js.map": "/static/js/runtime-main.83c3e0c4.js.map",
-    "static/js/2.5394153c.chunk.js": "/static/js/2.5394153c.chunk.js",
-    "static/js/2.5394153c.chunk.js.map": "/static/js/2.5394153c.chunk.js.map",
+    "static/js/2.6c1b498f.chunk.js": "/static/js/2.6c1b498f.chunk.js",
+    "static/js/2.6c1b498f.chunk.js.map": "/static/js/2.6c1b498f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.8e0c0c8e7c9f1ba53c5c934edd8e4e8e.js": "/precache-manifest.8e0c0c8e7c9f1ba53c5c934edd8e4e8e.js",
+    "precache-manifest.ad549ba977b5e44edf375719727da126.js": "/precache-manifest.ad549ba977b5e44edf375719727da126.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.5eef4911.chunk.css.map": "/static/css/main.5eef4911.chunk.css.map",
-    "static/js/2.5394153c.chunk.js.LICENSE.txt": "/static/js/2.5394153c.chunk.js.LICENSE.txt",
+    "static/css/main.60d180da.chunk.css.map": "/static/css/main.60d180da.chunk.css.map",
+    "static/js/2.6c1b498f.chunk.js.LICENSE.txt": "/static/js/2.6c1b498f.chunk.js.LICENSE.txt",
     "static/media/placeholder-profile.jpg": "/static/media/placeholder-profile.000b4e42.jpg",
     "static/media/sudoku-1.jpg": "/static/media/sudoku-1.f44fb033.jpg",
     "static/media/sudoku-2.jpg": "/static/media/sudoku-2.91619c5b.jpg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.83c3e0c4.js",
-    "static/js/2.5394153c.chunk.js",
-    "static/css/main.5eef4911.chunk.css",
-    "static/js/main.68002f8f.chunk.js"
+    "static/js/2.6c1b498f.chunk.js",
+    "static/css/main.60d180da.chunk.css",
+    "static/js/main.fed96ab2.chunk.js"
   ]
 }
