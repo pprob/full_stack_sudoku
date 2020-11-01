@@ -53,7 +53,6 @@ const Leaderboard = (props) => {
     setLeaderboardPage(leaderboardPage + 1)
   }
   const onClickButton = (buttonValue) => {
-    console.log(buttonValue)
     setLeaderboardPage(buttonValue)
   }
 
@@ -67,7 +66,7 @@ const Leaderboard = (props) => {
     firstPaginationIndex,
     lastPaginationIndex
   );
-  console.log( firstPaginationIndex,lastPaginationIndex, paginatedResults)
+
   return (
     <div className="app-body">
       <div className="app-container">

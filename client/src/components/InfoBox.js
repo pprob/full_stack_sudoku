@@ -53,7 +53,6 @@ const InfoBox = (props) => {
                 <input
                   type="radio"
                   value={true}
-                  onClick={(e) => console.log(e)}
                 />
                 <label
                   className={feedback ? "radio-selected" : null}

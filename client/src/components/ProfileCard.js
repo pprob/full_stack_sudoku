@@ -126,7 +126,6 @@ class ProfileCard extends React.Component {
             {this.state.scoreCard &&
               Object.keys(this.state.scoreCard).map((key) => {
                 const value = this.state.scoreCard[key];
-                console.log(key, value);
                 return (
                   <p>
                     <span className="difficulty-level">{key}</span> : <span className="wins">{value}</span>

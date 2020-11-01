@@ -17,13 +17,11 @@ const Login = (props) => {
 
   const setEmail = (e) => {
     const value = e.currentTarget.value.trim();
-    console.log(value.trim());
     SetEmail(value);
   };
 
   const setPassword = (e) => {
     const value = e.currentTarget.value.trim();
-    console.log(value);
     SetPassword(value);
   };
   const onSubmit = async (e) => {

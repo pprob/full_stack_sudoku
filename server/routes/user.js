@@ -45,7 +45,6 @@ router.post('/me/avatar', auth, avatarUpload.single('avatar'), async (req, res) 
     success:true
   })
 }, (error, req, res, next) => {
-  console.log(error.message)
   res.status(400).json({
     error: error.message
   })
@@ -88,7 +87,6 @@ router.post("/register", async (req, res) => {
       success: true,
     });
   } catch (e) {
-    console.log(e)
     return res.status(500).json({
       success: false,
       error: e.message
