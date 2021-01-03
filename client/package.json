@@ -50,6 +50,8 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
+    "@types/react-alert": "^5.2.0",
+    "@types/react-redux": "^7.1.15",
     "http-proxy-middleware": "^1.0.3"
   }
 }

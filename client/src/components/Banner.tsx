@@ -1,8 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import Navbar from "./Navbar";
 import "../styles/Banner.css";
 
-const Header = (props) => {
+interface Props {
+  loggedIn: boolean
+}
+
+const Header: FC<Props> = (props) => {
   const { loggedIn } = props;
   return (
     <header>

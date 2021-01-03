@@ -1,13 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import { connect } from 'react-redux';
 import BoardRow from "./BoardRow";
-import axios from 'axios'
+import axios from 'axios';
 import { useAlert } from "react-alert";
 import "../styles/Board.css";
-import { createNewGame } from '../redux/actions/actions'
+import { createNewGame } from '../redux/actions/actions';
+import { BoardState, State} from '../typings/types';
+import { Dispatch, AnyAction } from 'redux';
 
+// interface StateProps {
+//   boardState: BoardState
+// }
+// interface DispatchProps {
+//   dispatch: Dispatch<AnyAction>
+// }
 
-const Board = props => {
+// type Props = StateProps & DispatchProps
+
+const Board = (props) => {
   const { boardState, dispatch } = props
   const { inPlay, gameDifficulty, usedSolver, cellValues, solvedCellValues } = boardState
   const nineArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -22,7 +32,7 @@ const Board = props => {
     return true
   }
 
-  const checkGameOver = () => {
+  const checkGameOver = (): boolean => {
     var hasWon = true;
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
@@ -66,7 +76,7 @@ const Board = props => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   return {
     boardState: state.boardState
   }

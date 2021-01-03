@@ -1,8 +1,8 @@
 import fillGrid from './fillGrid'
-
+import { Board } from '../../typings/types'
 describe('fillGrid', () => {
   it('fills an empty 9x9 grid', () => {
-    const grid = [
+    const grid: Board = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -22,7 +22,7 @@ describe('fillGrid', () => {
     }
   })
   it('fills a partially empty 9x9 grid', () => {
-    const grid = [
+    const grid: Board = [
       [0, 4, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 1, 0, 0, 0, 0, 0],

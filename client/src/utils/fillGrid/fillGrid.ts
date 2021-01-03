@@ -4,9 +4,10 @@ import isInRow from "../isInRow/isInRow";
 import identifyWorkingSquare from "../identifyWorkingSquare/identifyWorkingSquare";
 import isInSquare from "../isInSquare/isInSquare";
 import checkGrid from "../checkGrid/checkGrid";
+import { Board } from "../../typings/types";
 
 
-const fillGrid = (grid) => {
+const fillGrid = (grid: Board) => {
   var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   let row = 0
   let col = 0
